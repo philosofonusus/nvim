@@ -51,7 +51,7 @@ vim.keymap.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'General Copy whole file' 
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'General Save file' })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear highlights' })
 
-vim.keymap.set('n', '<leader>tsv', ':vsp<CR>', { desc = 'toggle vertical split', remap = true })
-vim.keymap.set('n', '<leader>tsh', ':sp<CR>', { desc = 'toggle horizontal split', remap = true })
+vim.keymap.set('n', '<leader>sv', ':vsp<CR>', { desc = 'toggle vertical split', remap = true })
+vim.keymap.set('n', '<leader>sh', ':sp<CR>', { desc = 'toggle horizontal split', remap = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
 -- vim: ts=2 sts=2 sw=2 et
