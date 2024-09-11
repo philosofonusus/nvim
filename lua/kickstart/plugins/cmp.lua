@@ -123,12 +123,12 @@ return {
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
           { name = 'supermaven' },
           { name = 'path' },
           { name = 'buffer' },
-          { name = 'luasnip' },
-          { name = 'cmdline' },
           { name = 'nvim_lua' },
+          { name = 'cmdline' },
         },
       }
     end,
