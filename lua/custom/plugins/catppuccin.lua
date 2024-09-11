@@ -5,8 +5,11 @@ return {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
+        flavour = 'mocha',
         integrations = {
           lsp_saga = true,
+          lsp_trouble = true,
+          which_key = true,
           telescope = {
             enabled = true,
           },

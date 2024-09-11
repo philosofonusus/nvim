@@ -7,9 +7,8 @@ return {
       { '<leader>gf', '<cmd>Lspsaga finder<CR>', desc = 'LSP Finder' },
       { '<leader>rn', '<cmd>Lspsaga rename<CR>', desc = 'Rename' },
       { '<leager>gp', '<cmd>Lspsaga peek_definition<CR>', desc = 'Preview Definition' },
-      { '<leader>gpt', '<cmd>Lspsaga peek_type_definition<CR>', desc = 'Preview Type Definition' },
-      { '<leader>gd', '<cmd>Lspsaga goto_definition<CR>', desc = 'Outline' },
-      { '<leader>gt', '<cmd>Lspsaga goto_type_definition<CR>', desc = 'Outline' },
+      { '<leader>gd', '<cmd>Lspsaga goto_definition<CR>', desc = 'Go to definition' },
+      { '<leader>gt', '<cmd>Lspsaga goto_type_definition<CR>', desc = 'Go to type definition' },
       { '<leader>ol', '<cmd>Lspsaga outline<CR>', desc = 'Outline' },
     },
     config = function()
