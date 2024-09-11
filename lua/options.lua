@@ -43,6 +43,7 @@ vim.opt.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.splitkeep = 'cursor'
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -58,5 +59,29 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+vim.opt.hlsearch = true
+
+vim.opt.formatoptions:append { 'r' }
+
+vim.opt.backspace = 'start,eol,indent'
+vim.opt.path:append { '**' }
+vim.opt.wildignore:append { '*/node_modules/*,*/.history/*' }
+
+vim.opt.wrap = false
+
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+vim.opt.showcmd = true
+
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+
+vim.opt.expandtab = true
+
+-- Undercurl
+vim.cmd [[let &t_Cs = "\e[4:3m"]]
+vim.cmd [[let &t_Ce = "\e[4:0m"]]
 
 -- vim: ts=2 sts=2 sw=2 et

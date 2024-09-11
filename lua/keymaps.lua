@@ -2,7 +2,6 @@
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -18,20 +17,15 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+-- splits
+vim.keymap.set('n', '<leader>sv', ':vsp<CR>', { desc = 'toggle vertical split', remap = true })
+vim.keymap.set('n', '<leader>sh', ':sp<CR>', { desc = 'toggle horizontal split', remap = true })
 
 -- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -40,6 +34,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- insert mode mappings for moving around
 vim.keymap.set('i', '<C-b>', '<ESC>^i', { desc = 'move beginning of line' })
 vim.keymap.set('i', '<C-e>', '<End>', { desc = 'move end of line' })
 vim.keymap.set('i', '<C-h>', '<Left>', { desc = 'move left' })
@@ -47,11 +42,18 @@ vim.keymap.set('i', '<C-l>', '<Right>', { desc = 'move right' })
 vim.keymap.set('i', '<C-j>', '<Down>', { desc = 'move down' })
 vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'move up' })
 
+-- buffer opts
 vim.keymap.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'General Copy whole file' })
+vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'General Save file' })
+
+-- clear highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear highlights' })
 
-vim.keymap.set('n', '<leader>sv', ':vsp<CR>', { desc = 'toggle vertical split', remap = true })
-vim.keymap.set('n', '<leader>sh', ':sp<CR>', { desc = 'toggle horizontal split', remap = true })
+--code actions
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
+
+-- comments
+vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
+vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment', remap = true })
 -- vim: ts=2 sts=2 sw=2 et
