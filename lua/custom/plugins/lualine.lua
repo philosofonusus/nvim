@@ -11,7 +11,6 @@ return {
           'lazy',
           'quickfix',
           'oil',
-          'fugitive',
           'trouble',
         },
         sections = {
