@@ -6,6 +6,8 @@ This repository contains my personal neovim configuration that I use in day-to-d
 It contains all the useful plugins and configurations for web-dev and general programming.
 It is opionated, but still can be used as a starting point for your own configuration.
 
+When I initially started using neovim, my starting point was [NvChad](https://nvchad.com/). That's why you may find keybindings similar to NvChad's
+
 _This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration (huge thanks to them)._
 
 A starting point for Neovim that is:
