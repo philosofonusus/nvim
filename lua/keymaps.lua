@@ -56,4 +56,15 @@ vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Co
 -- comments
 vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
 vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment', remap = true })
+
+-- Press 'S' for quick find/replace for the word under the cursor
+vim.keymap.set('n', 'S', function()
+  local cmd = ':%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>'
+  local keys = vim.api.nvim_replace_termcodes(cmd, true, false, true)
+  vim.api.nvim_feedkeys(keys, 'n', false)
+end)
+
+-- Press 'U' for redo
+vim.keymap.set('n', 'U', '<C-r>')
+
 -- vim: ts=2 sts=2 sw=2 et
