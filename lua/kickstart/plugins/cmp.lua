@@ -46,6 +46,7 @@ return {
           require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
         end,
       },
+      'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp',

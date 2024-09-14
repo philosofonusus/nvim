@@ -30,7 +30,7 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Keep signcolumn on by default
+-- Keep signcolumn on by default to prevent jumps of buffer
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
@@ -40,7 +40,7 @@ vim.opt.updatetime = 250
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
+-- Better split settings to open new splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.splitkeep = 'cursor'
@@ -54,33 +54,40 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
--- Show which line your cursor is on
+-- Horizontal line to show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Enable incremental searching
 vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 vim.opt.formatoptions:append { 'r' }
 
 vim.opt.backspace = 'start,eol,indent'
 vim.opt.path:append { '**' }
+
+-- Better completion experience
+vim.opt.completeopt = 'menuone,noselect'
+
+-- ignore node_modules and .history
 vim.opt.wildignore:append { '*/node_modules/*,*/.history/*' }
 
+-- disable wrapping by default
 vim.opt.wrap = false
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.breakindent = true
 
 vim.opt.showcmd = true
 
 vim.opt.smarttab = true
-vim.opt.breakindent = true
-
 vim.opt.expandtab = true
 
--- Undercurl
+-- Enable undercurl
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
 vim.cmd [[let &t_Ce = "\e[4:0m"]]
 

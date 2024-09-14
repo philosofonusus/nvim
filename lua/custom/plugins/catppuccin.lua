@@ -8,8 +8,13 @@ return {
         flavour = 'mocha',
         integrations = {
           lsp_saga = true,
+          cmp = true,
+          gitsigns = true,
           lsp_trouble = true,
+          treesitter = true,
+          treesitter_context = true,
           which_key = true,
+          native_lsp = { enabled = true },
           telescope = {
             enabled = true,
           },
@@ -24,8 +29,6 @@ return {
           },
         },
       }
-    end,
-    init = function()
       vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
