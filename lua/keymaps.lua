@@ -4,6 +4,17 @@
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- open help in horizontal split
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('vertical_help', { clear = true }),
+  pattern = 'help',
+  callback = function()
+    vim.bo.bufhidden = 'unload'
+    vim.cmd.wincmd 'L'
+    vim.cmd.wincmd '='
+  end,
+})
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
