@@ -67,4 +67,7 @@ end)
 -- Press 'U' for redo
 vim.keymap.set('n', 'U', '<C-r>')
 
+-- Press gx to open the link under the cursor
+vim.keymap.set('n', 'gx', ':sil !open <cWORD><cr>', { silent = true })
+
 -- vim: ts=2 sts=2 sw=2 et
