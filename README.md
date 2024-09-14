@@ -1,8 +1,12 @@
-# My personal neovim config (made with love)
+# My neovim config (made with love)
 
 ## Introduction
 
-_This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration._
+This repository contains my personal neovim configuration that I use in day-to-day work.
+It contains all the useful plugins and configurations for web-dev and general programming.
+It is opionated, but still can be used as a starting point for your own configuration.
+
+_This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration (huge thanks to them)._
 
 A starting point for Neovim that is:
 
@@ -10,7 +14,7 @@ A starting point for Neovim that is:
 - Modular
 - Completely Documented
 
-**NOT** a Neovim distribution, but instead a starting point for your configuration.
+**NOT** a Neovim distribution, but instead a starting point for your configuration so I highly reccomend to start with this.
 
 ## Installation
 
