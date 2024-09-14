@@ -94,6 +94,11 @@ return {
       vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[F]ind in Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind in [H]elp' })
+      vim.keymap.set('n', '<leader>fc', function()
+        require('telescope.builtin').commands(require('telescope.themes').get_dropdown {
+          previewer = false,
+        })
+      end, { desc = '[F]ind [C]ommands' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>f/', function()
