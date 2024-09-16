@@ -17,3 +17,6 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.cmd.wincmd '='
   end,
 })
+
+-- disable auto commenting for new line
+vim.api.nvim_create_autocmd('BufEnter', { command = [[set formatoptions-=cro]] })

@@ -87,8 +87,15 @@ vim.opt.showcmd = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 
+-- Make terminal use 24-bit colors
+vim.o.termguicolors = true
+
 -- Enable undercurl
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
 vim.cmd [[let &t_Ce = "\e[4:0m"]]
+
+-- show invisibles
+vim.opt.listchars = { tab = '  ', trail = '·', extends = '»', precedes = '«', nbsp = '░' }
+vim.opt.list = true
 
 -- vim: ts=2 sts=2 sw=2 et
