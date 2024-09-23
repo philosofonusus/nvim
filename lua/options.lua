@@ -98,4 +98,7 @@ vim.cmd [[let &t_Ce = "\e[4:0m"]]
 vim.opt.listchars = { tab = '  ', trail = '·', extends = '»', precedes = '«', nbsp = '░' }
 vim.opt.list = true
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 -- vim: ts=2 sts=2 sw=2 et
