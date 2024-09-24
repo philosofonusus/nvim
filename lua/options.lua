@@ -70,7 +70,7 @@ vim.opt.backspace = 'start,eol,indent'
 vim.opt.path:append { '**' }
 
 -- Better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 -- ignore node_modules and .history
 vim.opt.wildignore:append { '*/node_modules/*,*/.history/*' }
