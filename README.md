@@ -4,6 +4,7 @@
 
 This repository contains my personal neovim configuration that I use in day-to-day work.
 It contains all the useful plugins and configurations for web-dev and general programming.
+I have went over many configs and combined all the best autocommands, keymaps and options that work for me
 It is opionated, but still can be used as a starting point for your own configuration.
 
 When I initially started using neovim, my starting point was [NvChad](https://nvchad.com/). That's why you may find keybindings similar to NvChad's
