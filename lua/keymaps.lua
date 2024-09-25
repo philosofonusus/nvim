@@ -65,4 +65,7 @@ vim.keymap.set('n', 'gx', ':sil !open <cWORD><cr>', { silent = true })
 -- prevent x delete from registering when next paste
 vim.keymap.set('n', 'x', '"_x', { silent = true, remap = true })
 
+-- Always use very magic mode for searching
+vim.keymap.set('n', '/', [[/\v]])
+
 -- vim: ts=2 sts=2 sw=2 et
