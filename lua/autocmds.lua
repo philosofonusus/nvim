@@ -74,3 +74,34 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.cmd 'startinsert'
   end,
 })
+
+-- show cursor line only in active window
+local cursorGrp = vim.api.nvim_create_augroup('CursorLine', { clear = true })
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
+  pattern = '*',
+  command = 'set cursorline',
+  group = cursorGrp,
+})
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { pattern = '*', command = 'set nocursorline', group = cursorGrp })
+
+-- to make tmux border as same as neovim ColorScheme
+vim.api.nvim_create_autocmd({ 'UIEnter', 'ColorScheme' }, {
+  callback = function()
+    local normal = vim.api.nvim_get_hl(0, { name = 'Normal' })
+    if not normal.bg then
+      return
+    end
+    io.write(string.format('\027Ptmux;\027\027]11;#%06x\007\027\\', normal.bg))
+    io.write(string.format('\027]11;#%06x\027\\', normal.bg))
+  end,
+})
+
+vim.api.nvim_create_autocmd('UILeave', {
+  callback = function()
+    io.write '\027Ptmux;\027\027]111;\007\027\\'
+    io.write '\027]111\027\\'
+  end,
+})
+
+-- resize neovim split when terminal is resized
+vim.api.nvim_command 'autocmd VimResized * wincmd ='
