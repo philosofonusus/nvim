@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd('UILeave', {
 
 -- resize neovim split when terminal is resized
 vim.api.nvim_create_autocmd('VimResized', {
-  group = api.nvim_create_augroup('win_autoresize', { clear = true }),
+  group = vim.api.nvim_create_augroup('win_autoresize', { clear = true }),
   desc = 'autoresize windows on resizing operation',
   command = 'wincmd =',
 })
