@@ -62,9 +62,6 @@ vim.keymap.set('n', 'U', '<C-r>')
 -- Press gx to open the link under the cursor
 vim.keymap.set('n', 'gx', ':sil !open <cWORD><cr>', { silent = true })
 
--- prevent x delete from registering when next paste
-vim.keymap.set('n', 'x', '"_x', { silent = true, remap = true })
-
 -- Always use very magic mode for searching
 vim.keymap.set('n', '/', [[/\v]])
 
