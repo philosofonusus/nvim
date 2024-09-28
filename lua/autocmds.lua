@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- open help in horizontal split
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('vertical_help', { clear = true }),
-  pattern = 'help',
+  pattern = { 'help', 'man' },
   callback = function()
     vim.bo.bufhidden = 'unload'
     vim.cmd.wincmd 'L'
