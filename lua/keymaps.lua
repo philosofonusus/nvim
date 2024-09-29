@@ -68,4 +68,12 @@ vim.keymap.set('n', '/', [[/\v]])
 -- prevent x delete from registering when next paste
 vim.keymap.set('n', 'x', '"_x')
 
+vim.keymap.set('n', 'gf', function()
+  if require('obsidian').util.cursor_on_markdown_link() then
+    return '<cmd>ObsidianFollowLink<CR>'
+  else
+    return 'gf'
+  end
+end, { noremap = false, expr = true })
+
 -- vim: ts=2 sts=2 sw=2 et

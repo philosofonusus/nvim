@@ -101,4 +101,7 @@ vim.opt.list = true
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
+-- enable colorcolumn
+vim.opt.colorcolumn = '80'
+
 -- vim: ts=2 sts=2 sw=2 et
