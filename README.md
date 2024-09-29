@@ -9,6 +9,16 @@ It is opionated, but still can be used as a starting point for your own configur
 
 When I initially started using neovim, my starting point was [NvChad](https://nvchad.com/). That's why you may find keybindings similar to NvChad's
 
+```
+Startuptime: 77.35ms
+
+Based on the actual CPU time of the Neovim process till UIEnter.
+This is more accurate than `nvim --startuptime`.
+  LazyStart 14.44ms
+  LazyDone  65.91ms (+51.47ms)
+  UIEnter   77.35ms (+11.44ms)
+```
+
 _This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration (huge thanks to them)._
 
 A starting point for Neovim that is:
