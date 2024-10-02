@@ -3,7 +3,9 @@ return {
     'kevinhwang91/nvim-bqf',
     config = function()
       require('bqf').setup {
-        winblend = 0,
+        preview = {
+          winblend = 0,
+        },
       }
     end,
   },
