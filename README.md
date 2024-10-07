@@ -13,15 +13,12 @@ UIEnter   80.82ms (+12.48ms)
 ## Introduction
 
 This repository contains my personal neovim configuration that I use in day-to-day work.
-I have went over numerous neovim configs and combined all the best autocommands, keymaps and options that work for me.
-Even though it is opionated, it has very good balance between ready to be used now,
-and providing good defaults and starting point for your own configuration.
-It contains all the useful plugins and configurations for web-dev and general programming.
 Since I'm actively using it, it is in my very own interest to maintain and fix any issues that may arise.
 
-When I initially started using neovim, my starting point was [NvChad](https://nvchad.com/). That's why you may find keybindings similar to NvChad's
+I have went over numerous neovim configs and combined all the best autocommands, keymaps and options that work for me.
+Even though it is opionated, it has very good balance between ready to be used now, and providing good defaults and starting point for your own configuration.
 
-_This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration (huge thanks to them)._
+It contains all the useful plugins and configurations for web-dev and general programming.
 
 ## Installation
 
@@ -141,3 +138,9 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 
 </details>
+
+## Thanks to
+
+When I initially started using neovim, my starting point was [NvChad](https://nvchad.com/). That's why you may find keybindings similar to NvChad's
+
+_This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration (huge thanks to them)._
