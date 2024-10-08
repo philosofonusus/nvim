@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- open help in horizontal split
+-- when opening help makes it open it in horizontal split
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('vertical_help', { clear = true }),
   pattern = { 'help', 'man' },
@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- disable auto commenting for new line
+-- disable auto adding comments for new line
 vim.api.nvim_create_autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
 
 -- Automatically reload the file if it is changed outside of Nvim, see https://unix.stackexchange.com/a/383044/221410.
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'CursorHold' }, {
   end,
 })
 
--- Do not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
+-- Do not use smart case in command line mode (helps with autocomplete), extracted from https://vi.stackexchange.com/a/16511/15292.
 vim.api.nvim_create_augroup('dynamic_smartcase', { clear = true })
 vim.api.nvim_create_autocmd('CmdLineEnter', {
   group = 'dynamic_smartcase',
