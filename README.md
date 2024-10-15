@@ -1,13 +1,13 @@
 # My neovim config <3
 
 ```
-Startuptime: 79.58ms
+Startuptime: 78.08ms
 
 Based on the actual CPU time of the Neovim process till UIEnter.
 This is more accurate than `nvim --startuptime`.
-  LazyStart 16.02ms
-  LazyDone  69.74ms (+53.72ms)
-  UIEnter   79.58ms (+9.84ms)
+  LazyStart 14.53ms
+  LazyDone  66.94ms (+52.4ms)
+  UIEnter   78.08ms (+11.15ms)
 ```
 
 ## Introduction

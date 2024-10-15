@@ -1,8 +1,8 @@
 return {
   {
     'NvChad/nvim-colorizer.lua',
-    event = 'User FilePost',
-    opts = { user_default_options = { names = false } },
+    lazy = false,
+    opts = { user_default_options = { tailwind = true } },
     config = function(_, opts)
       require('colorizer').setup(opts)
 
