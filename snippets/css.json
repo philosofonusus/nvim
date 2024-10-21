@@ -1,7 +1,7 @@
 {
-  "cssrst": {
+  "reset": {
     "description": "modern css reset snippet",
-    "prefix": "cssrst",
+    "prefix": "reset",
     "body": [
       "/* Box sizing rules */",
       "*,",
