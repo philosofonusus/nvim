@@ -9,8 +9,5 @@ return {
       }
     end,
   },
-  {
-    'stevearc/qf_helper.nvim',
-    opts = {},
-  },
+  ,
 }
