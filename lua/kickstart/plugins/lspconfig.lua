@@ -123,6 +123,12 @@ return {
         html = {},
         cssls = {},
         eslint = {},
+        denols = {
+          root_dir = function(fname)
+            local root_pattern = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc')
+            return root_pattern(fname)
+          end,
+        },
         tailwindcss = {
           hovers = true,
           suggestions = true,
