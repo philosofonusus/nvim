@@ -15,8 +15,6 @@ return {
       require('Comment').setup {
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       }
-      vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
-      vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment', remap = true })
     end,
   },
 }
