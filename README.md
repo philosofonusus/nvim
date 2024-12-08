@@ -33,7 +33,7 @@ External Requirements:
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
   - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
 - Language Setup:
-  - `npm i -g vscode-langservers-extracted`
+  - `npm i -g typescript typescript-language-server`
 
 ### Install Mason dependencies
 
