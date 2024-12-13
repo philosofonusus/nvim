@@ -23,10 +23,6 @@ return {
           diffview = true,
           harpoon = true,
           fidget = true,
-          indent_blankline = {
-            enabled = true,
-            colored_indent_levels = false,
-          },
         },
       }
       vim.cmd.colorscheme 'catppuccin-mocha'
