@@ -1,26 +1,28 @@
 return {
   {
-    'philosofonusus/ecolog.nvim',
+    dir = '~/projects/ecolog.nvim',
     keys = {
       { '<leader>ge', '<cmd>EcologGoto<cr>', desc = 'Go to env file' },
       { '<leader>es', '<cmd>EcologSelect<cr>', desc = 'Switch env file' },
-      { '<leader>ep', '<cmd>EcologPeek<cr>', desc = 'Ecolog peek env' },
+      { '<leader>eS', '<cmd>EcologShelterToggle<cr>', desc = 'Ecolog shelter toggle' },
     },
     dependencies = { 'nvim-telescope/telescope.nvim' },
     lazy = false,
     opts = {
       preferred_environment = 'local',
+      types = true,
+      integrations = {
+        lspsaga = true,
+      },
       shelter = {
         configuration = {
-          partial_mode = {
-            show_start = 3, -- Number of characters to show at start
-            show_end = 3, -- Number of characters to show at end
-            min_mask = 3, -- Minimum number of mask characters
-          },
-          shelter_char = '8',
+          partial_mode = true,
+          mask_char = '*',
         },
         modules = {
           files = true,
+          peek = false,
+          telescope = true,
           cmp = true,
         },
       },
