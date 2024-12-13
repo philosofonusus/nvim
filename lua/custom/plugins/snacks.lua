@@ -1,3 +1,4 @@
+vim.api.nvim_set_hl(0, 'SnacksIndent', { fg = '#313244' })
 return {
   {
     'folke/snacks.nvim',
