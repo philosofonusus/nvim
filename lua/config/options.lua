@@ -2,6 +2,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.have_nerd_font = true
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -30,7 +32,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default to prevent jumps of buffer
-vim.opt.signcolumn = 'yes'
+vim.opt.statuscolumn = ' '
+vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.opt.updatetime = 250
