@@ -2,7 +2,11 @@ return {
   {
     'pmizio/typescript-tools.nvim',
     lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    dependencies = { 
+      'nvim-lua/plenary.nvim', 
+      'neovim/nvim-lspconfig',
+      'saghen/blink.cmp',
+    },
     opts = {},
     keys = {
       { '<leader>oi', '<cmd>TSToolsOrganizeImports<cr>', desc = 'Organize Imports' },
@@ -10,8 +14,7 @@ return {
       { '<leader>ami', '<cmd>TSToolsAddMissingImports<cr>', desc = 'Add Missing Imports' },
     },
     config = function()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       local api = require 'typescript-tools.api'
       require('typescript-tools').setup {
         handlers = {
@@ -27,6 +30,19 @@ return {
           'typescriptreact',
           'typescript.tsx',
         },
+      }
+    end,
+  },
+  {
+    'dmmulroy/tsc.nvim',
+    lazy = true,
+    ft = { 'typescript', 'typescriptreact' },
+    keys = { { '<leader>tc', '<cmd>TSC<cr>', desc = '[T]ypeScript [C]ompile' } },
+    config = function()
+      require('tsc').setup {
+        use_trouble_qflist = true,
+        auto_open_qflist = true,
+        pretty_errors = false,
       }
     end,
   },

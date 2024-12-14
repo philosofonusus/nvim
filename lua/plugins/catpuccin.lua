@@ -8,7 +8,7 @@ return {
         flavour = 'mocha',
         integrations = {
           lsp_saga = true,
-          cmp = true,
+          blink_cmp = true,
           gitsigns = true,
           lsp_trouble = true,
           treesitter = true,

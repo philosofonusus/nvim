@@ -1,6 +1,3 @@
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
 -- Set highlight on search, but clear on switching to normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-[', '<cmd>nohlsearch<CR>')
@@ -38,7 +35,6 @@ vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'move up' })
 -- buffer opts
 vim.keymap.set('n', '<C-c>', '<cmd>%y+<CR>', { desc = 'General Copy whole file' })
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'General Save file' })
 
 -- clear highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear highlights' })
@@ -69,6 +65,7 @@ vim.keymap.set('n', '/', [[/\v]])
 -- prevent x delete from registering when next paste
 vim.keymap.set('n', 'x', '"_x')
 
+-- usefull for obsidian to follow links on pressing gf
 vim.keymap.set('n', 'gf', function()
   if require('obsidian').util.cursor_on_markdown_link() then
     return '<cmd>ObsidianFollowLink<CR>'
