@@ -1,6 +1,4 @@
 -- Set leader key before anything else
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
@@ -32,8 +30,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default to prevent jumps of buffer
-vim.opt.statuscolumn = ' '
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
+vim.opt.statuscolumn = ''
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -99,5 +97,14 @@ vim.opt.laststatus = 3
 
 -- enable colorcolumn
 vim.opt.colorcolumn = '80'
+
+if vim.g.have_nerd_font then
+  local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
+  local diagnostic_signs = {}
+  for type, icon in pairs(signs) do
+    diagnostic_signs[vim.diagnostic.severity[type]] = icon
+  end
+  vim.diagnostic.config { signs = { text = diagnostic_signs } }
+end
 
 -- vim: ts=2 sts=2 sw=2 et
