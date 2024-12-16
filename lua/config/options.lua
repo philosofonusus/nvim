@@ -31,7 +31,6 @@ vim.opt.smartcase = true
 
 -- Keep signcolumn on by default to prevent jumps of buffer
 vim.opt.signcolumn = 'yes'
-vim.opt.statuscolumn = ''
 
 -- Decrease update time
 vim.opt.updatetime = 250
