@@ -14,8 +14,8 @@ return {
       integrations = {
         lspsaga = true,
         -- BLINK-CMP uncomment two lines below
-        -- blink_cmp = true,
-        -- nvim_cmp = false
+        blink_cmp = true,
+        -- nvim_cmp = false,
       },
       shelter = {
         configuration = {

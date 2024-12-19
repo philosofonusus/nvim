@@ -16,6 +16,9 @@ return {
         ui = {
           kind = require('catppuccin.groups.integrations.lsp_saga').custom_kind(),
         },
+        lightbulb = {
+          sign = false,
+        },
       }
     end,
     dependencies = {
