@@ -65,6 +65,7 @@ return {
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
+      require('nvim-ts-autotag').setup()
       require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
