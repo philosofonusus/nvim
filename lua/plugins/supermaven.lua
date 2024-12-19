@@ -1,10 +1,18 @@
 return {
   {
     'supermaven-inc/supermaven-nvim',
-    event = 'VeryLazy',
+    event = 'InsertEnter',
+    cmd = {
+      'SupermavenUseFree',
+      'SupermavenUsePro',
+    },
     config = function()
       require('supermaven-nvim').setup {
-        disable_inline_completion = true,
+        disable_inline_completion = vim.g.ai_cmp,
+        keymaps = {
+          accept_suggestion = nil,
+        },
+        ignore_filetypes = { 'bigfile', 'snacks_input', 'snacks_notif' },
         -- disable annoying startup message
         log_level = 'off',
       }

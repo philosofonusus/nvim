@@ -29,8 +29,8 @@ return {
       },
       sources = {
         providers = {
-          ecolog = { score_offset = 6, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
-          supermaven = { score_offset = 5, name = 'supermaven', module = 'blink.compat.source' },
+          ecolog = { score_offset = 101, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          supermaven = { score_offset = 100, async = true, name = 'supermaven', module = 'blink.compat.source' },
           lsp = { score_offset = 4, name = 'lsp', module = 'blink.cmp.sources.lsp' },
           snippets = { score_offset = 3, name = 'snippets', module = 'blink.cmp.sources.snippets' },
           path = { score_offset = 2, name = 'path', module = 'blink.cmp.sources.path' },
@@ -46,6 +46,11 @@ return {
       completion = {
         signature = {
           enabled = true,
+        },
+        menu = {
+          draw = {
+            treesitter = { 'lsp' },
+          },
         },
         documentation = {
           auto_show = true,
