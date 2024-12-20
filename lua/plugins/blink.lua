@@ -16,7 +16,7 @@ return {
     version = 'v0.*', -- use a release tag to download pre-built binaries
     opts = {
       keymap = {
-        preset = 'default',
+        preset = 'enter',
         ['<C-n>'] = { 'select_next', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
         ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
@@ -35,6 +35,9 @@ return {
           snippets = { score_offset = 3, name = 'snippets', module = 'blink.cmp.sources.snippets' },
           path = { score_offset = 2, name = 'path', module = 'blink.cmp.sources.path' },
           buffer = { score_offset = 1, name = 'buffer', module = 'blink.cmp.sources.buffer' },
+        },
+        ghost_text = {
+          enabled = vim.g.ai_cmp,
         },
         completion = {
           enabled_providers = { 'ecolog', 'supermaven', 'lsp', 'snippets', 'path', 'buffer' },

@@ -1,10 +1,16 @@
 return {
   {
+    'windwp/nvim-ts-autotag',
+    lazy = false,
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    dependencies = {
-      'windwp/nvim-ts-autotag',
-    },
+    dependencies = { 'windwp/nvim-ts-autotag' },
     opts = {
       incremental_selection = {
         enable = true,
@@ -58,13 +64,9 @@ return {
         enable = true,
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      autotag = {
-        enable = true,
-      },
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
-      require('nvim-ts-autotag').setup()
       require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
