@@ -62,6 +62,8 @@ return {
         end
       end
 
+      opts.consumers.timber = require('timber.watcher.sources.neotest').consumer
+
       if opts.adapters then
         local adapters = {}
         for name, config in pairs(opts.adapters or {}) do
