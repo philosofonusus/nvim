@@ -13,8 +13,6 @@ return {
       types = true,
       integrations = {
         lspsaga = true,
-        -- BLINK-CMP uncomment two lines below
-        -- blink_cmp = true,
         nvim_cmp = true,
       },
       shelter = {
@@ -29,7 +27,8 @@ return {
         modules = {
           files = true,
           peek = false,
-          telescope = true,
+          telescope_previewer = true,
+          telescope = false,
           cmp = true,
         },
       },

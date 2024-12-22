@@ -20,11 +20,33 @@ return {
   {
     'Goose97/timber.nvim',
     event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>glc',
+        function()
+          require('timber.actions').toggle_comment_log_statements { global = false }
+        end,
+        desc = 'Toggle Comment Log Statements',
+      },
+      {
+        '<leader>gld',
+        function()
+          require('timber.actions').clear_log_statements { global = true }
+        end,
+        desc = 'Delete Log statements',
+      },
+    },
     config = function()
       require('timber').setup {
+        log_marker = '🪵',
         log_watcher = {
           enabled = true,
-          sources = {},
+          sources = {
+            neotest = {
+              type = 'neotest',
+              name = 'Neotest',
+            },
+          },
           preview_snippet_length = 32,
         },
       }

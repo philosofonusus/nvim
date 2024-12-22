@@ -5,7 +5,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'neovim/nvim-lspconfig',
-      'saghen/blink.cmp',
+      -- 'saghen/blink.cmp',
     },
     opts = {},
     keys = {

@@ -8,7 +8,8 @@ return {
     },
     config = function()
       require('supermaven-nvim').setup {
-        disable_inline_completion = vim.g.ai_cmp,
+        -- disable_inline_completion = vim.g.ai_cmp,
+        disable_inline_completion = true,
         keymaps = {
           accept_suggestion = nil,
         },

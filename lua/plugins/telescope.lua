@@ -29,6 +29,7 @@ return {
               ['<Esc>'] = require('telescope.actions').close,
             },
           },
+          file_ignore_patterns = { 'pnpm-lock.yaml', 'package-lock.json', 'node_modules' },
         },
         extensions = {
           ['ui-select'] = {
