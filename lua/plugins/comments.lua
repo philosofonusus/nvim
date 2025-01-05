@@ -35,16 +35,31 @@ return {
         end,
         desc = 'Delete Log statements',
       },
+      {
+        '<leader>glw',
+        function()
+          require('timber.actions').insert_log { template = 'watcher', position = 'below' }
+        end,
+        desc = 'Insert Watcher Log Statement',
+      },
     },
     config = function()
       require('timber').setup {
-        log_marker = '🪵',
+        log_templates = {
+          watcher = {
+            javascript = [[console.log('%watcher_marker_start', %log_target, '%watcher_marker_end')]],
+            typescript = [[console.log('%watcher_marker_start', %log_target, '%watcher_marker_end')]],
+            jsx = [[console.log('%watcher_marker_start', %log_target, '%watcher_marker_end')]],
+            tsx = [[console.log('%watcher_marker_start', %log_target, '%watcher_marker_end')]],
+          },
+        },
         log_watcher = {
           enabled = true,
           sources = {
-            neotest = {
-              type = 'neotest',
-              name = 'Neotest',
+            ts = {
+              type = 'filesystem',
+              name = 'Log file',
+              path = '/tmp/metro.log',
             },
           },
           preview_snippet_length = 32,
