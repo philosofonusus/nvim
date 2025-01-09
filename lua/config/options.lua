@@ -106,4 +106,9 @@ if vim.g.have_nerd_font then
   vim.diagnostic.config { signs = { text = diagnostic_signs } }
 end
 
+vim.filetype.add {
+  pattern = {
+    ['%.env%.[%w_.-]+'] = 'sh',
+  },
+}
 -- vim: ts=2 sts=2 sw=2 et
