@@ -175,6 +175,11 @@ return {
       },
     },
     init = function()
+      require('snacks').util.set_hl({
+        Totals = 'Comment',
+        Dir = 'Comment',
+      }, { prefix = 'SnacksPicker' })
+
       vim.api.nvim_create_autocmd('User', {
         pattern = 'VeryLazy',
         callback = function()
