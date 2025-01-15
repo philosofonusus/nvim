@@ -6,6 +6,7 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+      picker = {},
       bigfile = { enabled = true },
       scope = { enabled = true },
       dashboard = { enabled = false },
@@ -21,6 +22,92 @@ return {
       words = { enabled = true },
     },
     keys = {
+      {
+        '<leader>,',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Buffers',
+      },
+      {
+        '<leader>fw',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = 'Grep',
+      },
+      {
+        '<leader><space>',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Find Files',
+      },
+      {
+        '<leader>:',
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = 'Command History',
+      },
+      {
+        '<leader>ff',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = 'Find Files',
+      },
+
+      {
+        '<leader>gd',
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = 'Goto Definition',
+      },
+      {
+        '<leader>gr',
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = 'References',
+      },
+      {
+        '<leader>gi',
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = 'Goto Implementation',
+      },
+      {
+        '<leader>gt',
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = 'Goto T[y]pe Definition',
+      },
+      {
+        '<leader>fsd',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'LSP Symbols',
+      },
+      {
+        '<leader>fc',
+        function()
+          Snacks.picker.commands()
+        end,
+        desc = 'Commands',
+      },
+      {
+        '<leader>fh',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = 'Help Pages',
+      },
       {
         '<leader>z',
         function()

@@ -48,6 +48,14 @@ return {
             'filename',
             harpoon_section,
           },
+          lualine_x = {
+            require('ecolog').get_lualine(),
+          },
+          lualine_y = {
+            'encoding',
+            'fileformat',
+            'filetype',
+          },
         },
       }
     end,
