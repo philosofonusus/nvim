@@ -111,4 +111,5 @@ vim.filetype.add {
     ['%.env%.[%w_.-]+'] = 'sh',
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et

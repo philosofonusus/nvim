@@ -53,17 +53,9 @@ return {
       {
         '<leader>ff',
         function()
-          Snacks.picker.files()
+          Snacks.picker.files { hidden = true, exclude = { 'node_modules' } }
         end,
         desc = 'Find Files',
-      },
-
-      {
-        '<leader>gd',
-        function()
-          Snacks.picker.lsp_definitions()
-        end,
-        desc = 'Goto Definition',
       },
       {
         '<leader>gr',
