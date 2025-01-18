@@ -57,14 +57,6 @@ return {
         end,
         desc = 'Find Files',
       },
-
-      {
-        '<leader>gd',
-        function()
-          Snacks.picker.lsp_definitions()
-        end,
-        desc = 'Goto Definition',
-      },
       {
         '<leader>gr',
         function()
