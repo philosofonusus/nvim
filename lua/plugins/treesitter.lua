@@ -33,6 +33,7 @@ return {
         'gitcommit',
         'gitignore',
         'html',
+        'graphql',
         'http',
         'javascript',
         'jq',

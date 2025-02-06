@@ -23,13 +23,6 @@ return {
     },
     keys = {
       {
-        '<leader>,',
-        function()
-          Snacks.picker.buffers()
-        end,
-        desc = 'Buffers',
-      },
-      {
         '<leader>fw',
         function()
           Snacks.picker.grep()
