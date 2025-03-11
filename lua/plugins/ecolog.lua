@@ -52,7 +52,6 @@ return {
       },
       shelter = {
         configuration = {
-          mask_length = 5,
           patterns = {
             ['DATABASE_URL'] = 'full',
           },

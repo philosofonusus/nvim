@@ -3,10 +3,12 @@ local M = {}
 ---@type table<string,true>
 M.hl = {}
 
+M.max_file_size = 100 * 1024
+
 M.plugin = {
   'echasnovski/mini.hipatterns',
   recommended = true,
-  desc = 'Highlight colors in your code. Also includes Tailwind CSS support.',
+  desc = 'Highlight colors in your code with file size limit. Also includes Tailwind CSS support.',
   event = { 'BufWritePre', 'BufReadPost', 'BufNewFile' },
   opts = function()
     local hi = require 'mini.hipatterns'
@@ -47,8 +49,31 @@ M.plugin = {
     }
   end,
   config = function(_, opts)
+    vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost', 'BufNewFile' }, {
+      callback = function(args)
+        local bufnr = args.buf
+        local file_path = vim.api.nvim_buf_get_name(bufnr)
+
+        if file_path == '' then
+          return
+        end
+
+        local file_size = vim.fn.getfsize(file_path)
+
+        if file_size <= 0 then
+          return
+        end
+
+        if file_size > M.max_file_size then
+          vim.b[bufnr].hipatterns_disabled = true
+          vim.notify('File is too large (' .. string.format('%.1f', file_size / 1024) .. ' KB), hipatterns disabled', vim.log.levels.INFO)
+        else
+          vim.b[bufnr].hipatterns_disabled = false
+        end
+      end,
+    })
+
     if type(opts.tailwind) == 'table' and opts.tailwind.enabled then
-      -- reset hl groups when colorscheme changes
       vim.api.nvim_create_autocmd('ColorScheme', {
         callback = function()
           M.hl = {}
@@ -56,6 +81,10 @@ M.plugin = {
       })
       opts.highlighters.tailwind = {
         pattern = function()
+          if vim.b.hipatterns_disabled then
+            return
+          end
+
           if not vim.tbl_contains(opts.tailwind.ft, vim.bo.filetype) then
             return
           end
@@ -86,6 +115,23 @@ M.plugin = {
         extmark_opts = { priority = 2000 },
       }
     end
+
+    local original_hex_pattern = opts.highlighters.hex_color.pattern
+    opts.highlighters.hex_color.pattern = function()
+      if vim.b.hipatterns_disabled then
+        return
+      end
+      return original_hex_pattern
+    end
+
+    local original_shorthand_pattern = opts.highlighters.shorthand.pattern
+    opts.highlighters.shorthand.pattern = function()
+      if vim.b.hipatterns_disabled then
+        return
+      end
+      return original_shorthand_pattern
+    end
+
     require('mini.hipatterns').setup(opts)
   end,
 }
