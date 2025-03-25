@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/projects/morta',
+    'philosofonusus/morta',
     name = 'morta',
     priority = 1000,
     opts = {},
