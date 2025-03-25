@@ -29,6 +29,20 @@ return {
         desc = 'Toggle Comment Log Statements',
       },
       {
+        '<leader>glj',
+        function()
+          require('timber.actions').insert_log { position = 'below' }
+        end,
+        desc = 'Insert Log Below',
+      },
+      {
+        '<leader>glk',
+        function()
+          require('timber.actions').insert_log { position = 'above' }
+        end,
+        desc = 'Insert Log Above',
+      },
+      {
         '<leader>gld',
         function()
           require('timber.actions').clear_log_statements { global = true }
