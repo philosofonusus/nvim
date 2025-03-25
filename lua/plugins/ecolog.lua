@@ -44,7 +44,7 @@ return {
       end,
       integrations = {
         lspsaga = true,
-        nvim_cmp = true,
+        blink_cmp = true,
         statusline = {
           hidden_mode = true,
         },
