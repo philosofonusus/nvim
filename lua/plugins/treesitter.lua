@@ -28,6 +28,7 @@ return {
         'dockerfile',
         'dot',
         'git_rebase',
+        'astro',
         'gitattributes',
         'prisma',
         'gitcommit',

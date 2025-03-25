@@ -55,6 +55,7 @@ return {
       local servers = {
         html = {},
         cssls = {},
+        astro = {},
         eslint = {},
         denols = {
           root_dir = function(fname)
@@ -146,6 +147,8 @@ return {
         'prisma-language-server',
         'luacheck',
         'stylua',
+
+        'astro',
 
         -- SQL
         'sqls',

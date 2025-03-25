@@ -36,7 +36,6 @@ return {
       require('lualine').setup {
         options = {
           globalstatus = true,
-          theme = 'tokyonight',
         },
         extensions = {
           'lazy',
