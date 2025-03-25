@@ -14,10 +14,10 @@ return {
       { '<leader>ami', '<cmd>TSToolsAddMissingImports<cr>', desc = 'Add Missing Imports' },
     },
     config = function()
-      local client_capabilties = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
       -- BLINK-CMP uncomment line below
-      local capabilities = require('blink.cmp').get_lsp_capabilities(client_capabilties)
-      -- comment two lines below
+      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+      -- comment line below
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local api = require 'typescript-tools.api'
