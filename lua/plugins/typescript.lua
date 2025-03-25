@@ -5,7 +5,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'neovim/nvim-lspconfig',
-      -- 'saghen/blink.cmp',
+      'saghen/blink.cmp',
     },
     opts = {},
     keys = {
@@ -14,14 +14,17 @@ return {
       { '<leader>ami', '<cmd>TSToolsAddMissingImports<cr>', desc = 'Add Missing Imports' },
     },
     config = function()
+      local client_capabilties = vim.lsp.protocol.make_client_capabilities()
       -- BLINK-CMP uncomment line below
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities(client_capabilties)
       -- comment two lines below
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local api = require 'typescript-tools.api'
       require('typescript-tools').setup {
+        settings = {
+          capabilities = capabilities,
+        },
         handlers = {
           ['textDocument/publishDiagnostics'] = api.filter_diagnostics { 80006 },
         },
