@@ -22,9 +22,7 @@ return {
 
       local api = require 'typescript-tools.api'
       require('typescript-tools').setup {
-        settings = {
-          capabilities = capabilities,
-        },
+        capabilities = capabilities,
         handlers = {
           ['textDocument/publishDiagnostics'] = api.filter_diagnostics { 80006 },
         },
