@@ -64,7 +64,7 @@ return {
       },
       sources = {
         providers = {
-          ecolog = { score_offset = 101, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          ecolog = { score_offset = 102, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
           copilot = {
             name = 'copilot',
             module = 'blink-cmp-copilot',
