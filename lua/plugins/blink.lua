@@ -64,11 +64,12 @@ return {
       },
       sources = {
         providers = {
-          ecolog = { score_offset = 102, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          ecolog = { score_offset = 100, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          lsp = { score_offset = 99, name = 'lsp', module = 'blink.cmp.sources.lsp' },
           copilot = {
             name = 'copilot',
             module = 'blink-cmp-copilot',
-            score_offset = 100,
+            score_offset = 98,
             async = true,
             transform_items = function(_, items)
               local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
