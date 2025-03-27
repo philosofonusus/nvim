@@ -46,7 +46,6 @@ return {
         'markdown',
         'markdown_inline',
         'nix',
-        'org',
         'python',
         'regex',
         'rust',
