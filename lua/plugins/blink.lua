@@ -16,11 +16,7 @@ return {
     version = 'v0.*', -- use a release tag to download pre-built binaries
     opts = {
       keymap = {
-        ['<C-n>'] = { 'select_next', 'fallback' },
-        ['<C-p>'] = { 'select_prev', 'fallback' },
-        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-        ['<C-y>'] = { 'select_and_accept' },
+        preset = 'default',
       },
       appearance = {
         use_nvim_cmp_as_default = true,
