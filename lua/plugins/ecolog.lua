@@ -48,6 +48,10 @@ return {
         blink_cmp = true,
         statusline = {
           hidden_mode = true,
+          highlights = {
+            env_file = 'Directory',
+            vars_count = 'Number',
+          },
         },
         snacks = true,
       },

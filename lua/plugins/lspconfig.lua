@@ -46,9 +46,9 @@ return {
       })
       local util = require 'lspconfig/util'
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
       -- BLINK-CMP uncomment line below
-      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- comment line below
       -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
