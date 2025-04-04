@@ -122,6 +122,13 @@ return {
         desc = 'Delete Buffer',
       },
       {
+        '<leader>.',
+        function()
+          Snacks.scratch()
+        end,
+        desc = 'Toggle Scratch Buffer',
+      },
+      {
         '<leader>lf',
         function()
           Snacks.lazygit.log_file()
@@ -183,5 +190,17 @@ return {
         end,
       })
     end,
+  },
+  {
+    'DestopLine/scratch-runner.nvim',
+    dependencies = 'folke/snacks.nvim',
+    opts = {
+      sources = {
+        javascript = { 'node' },
+        typescript = {
+          'deno',
+        },
+      },
+    },
   },
 }
