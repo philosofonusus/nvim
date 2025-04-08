@@ -42,9 +42,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear highlights'
 --code actions
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
 
--- WARN: opionated, this makes visual line mode create block comments (usefull for JSX)
-vim.keymap.set('n', '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
-vim.keymap.set('v', '<leader>/', 'gc', { desc = 'Toggle comment', remap = true })
+-- comments
+vim.keymap.set({ 'n', 'v' }, '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
 
 -- Press 'S' for quick find/replace for the word under the cursor
 vim.keymap.set('n', 'S', function()

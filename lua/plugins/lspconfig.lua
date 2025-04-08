@@ -13,7 +13,7 @@ return {
         },
       } },
       { 'folke/neodev.nvim', opts = {} },
-      -- 'saghen/blink.cmp',
+      'saghen/blink.cmp',
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -46,11 +46,7 @@ return {
       })
       local util = require 'lspconfig/util'
 
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- BLINK-CMP uncomment line below
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- comment line below
-      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local on_publish_diagnostics = vim.lsp.diagnostic.on_publish_diagnostics
       local servers = {

@@ -14,11 +14,7 @@ return {
       { '<leader>ami', '<cmd>TSToolsAddMissingImports<cr>', desc = 'Add Missing Imports' },
     },
     config = function()
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-      -- BLINK-CMP uncomment line below
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- comment line below
-      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local api = require 'typescript-tools.api'
       require('typescript-tools').setup {
@@ -26,6 +22,20 @@ return {
         handlers = {
           ['textDocument/publishDiagnostics'] = api.filter_diagnostics { 80006 },
         },
+        settings = {
+          jsx_close_tag = {
+            enable = true,
+            filetypes = { 'javascriptreact', 'typescriptreact' },
+          },
+          tsserver_plugins = {
+            '@astrojs/ts-plugin',
+          },
+          tsserver_max_memory = 'auto',
+        },
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
         single_file_support = false,
         root_dir = function(fname)
           local root_pattern = require('lspconfig').util.root_pattern 'package.json'
