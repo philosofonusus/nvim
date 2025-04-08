@@ -49,16 +49,6 @@ return {
       end,
     },
   },
-  {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'folke/snacks.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    opts = {
-      picker = 'snacks',
-    },
-  },
+  ,
 }
 -- vim: ts=2 sts=2 sw=2 et
