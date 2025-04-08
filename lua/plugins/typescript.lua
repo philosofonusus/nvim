@@ -41,7 +41,7 @@ return {
           local root_pattern = require('lspconfig').util.root_pattern 'package.json'
           return root_pattern(fname)
         end,
-        file_types = {
+        filetypes = {
           'typescript',
           'typescriptreact',
           'typescript.tsx',
