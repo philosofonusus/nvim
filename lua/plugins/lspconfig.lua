@@ -50,17 +50,16 @@ return {
 
       local on_publish_diagnostics = vim.lsp.diagnostic.on_publish_diagnostics
       local servers = {
-        html = {},
-        cssls = {},
-        astro = {},
-        eslint = {},
-        denols = {
+        ['html-lsp'] = {},
+        ['css-lsp'] = {},
+        ['eslint-lsp'] = {},
+        deno = {
           root_dir = function(fname)
             local root_pattern = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc')
             return root_pattern(fname)
           end,
         },
-        bashls = {
+        ['bash-language-server'] = {
           handlers = {
             ['textDocument/publishDiagnostics'] = function(err, res, ...)
               local file_name = vim.fn.fnamemodify(vim.uri_to_fname(res.uri), ':t')
@@ -70,7 +69,7 @@ return {
             end,
           },
         },
-        tailwindcss = {
+        ['tailwindcss-language-server'] = {
           hovers = true,
           suggestions = true,
           root_dir = function(fname)
@@ -84,47 +83,45 @@ return {
             return root_pattern(fname)
           end,
         },
-        emmet_language_server = {
-          {
-            filetypes = {
-              'astro',
-              'css',
-              'eruby',
-              'html',
-              'javascript',
-              'javascriptreact',
-              'less',
-              'php',
-              'pug',
-              'sass',
-              'scss',
-              'typescriptreact',
-            },
-            init_options = {
-              --- @type string[]
-              excludeLanguages = {},
-              --- @type string[]
-              extensionsPath = {},
-              --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
-              preferences = {},
-              --- @type boolean Defaults to `true`
-              showAbbreviationSuggestions = true,
-              --- @type "always" | "never" Defaults to `"always"`
-              showExpandedAbbreviation = 'always',
-              --- @type boolean Defaults to `false`
-              showSuggestionsAsSnippets = false,
-              --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
-              syntaxProfiles = {},
-              --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
-              variables = {},
-            },
+        ['emmet-language-server'] = {
+          filetypes = {
+            'astro',
+            'css',
+            'eruby',
+            'html',
+            'javascript',
+            'javascriptreact',
+            'less',
+            'php',
+            'pug',
+            'sass',
+            'scss',
+            'typescriptreact',
+          },
+          init_options = {
+            --- @type string[]
+            excludeLanguages = {},
+            --- @type string[]
+            extensionsPath = {},
+            --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
+            preferences = {},
+            --- @type boolean Defaults to `true`
+            showAbbreviationSuggestions = true,
+            --- @type "always" | "never" Defaults to `"always"`
+            showExpandedAbbreviation = 'always',
+            --- @type boolean Defaults to `false`
+            showSuggestionsAsSnippets = false,
+            --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
+            syntaxProfiles = {},
+            --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
+            variables = {},
           },
         },
-        rust_analyzer = {
-          file_types = { 'rust' },
-          root_dir = util.root_pattern 'Config.toml',
+        ['rust-analyzer'] = {
+          filetypes = { 'rust' },
+          root_dir = util.root_pattern 'Cargo.toml',
         },
-        lua_ls = {
+        ['lua-language-server'] = {
           settings = {
             Lua = {
               completion = {
@@ -135,28 +132,21 @@ return {
         },
       }
 
-      require('mason').setup()
-
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- Lua
-        'lua-language-server',
         'prisma-language-server',
         'luacheck',
         'stylua',
-
-        'astro',
 
         -- SQL
         'sqls',
         'sqlfluff',
         'sql-formatter',
-
         'prettierd',
         'eslint_d',
 
         -- Rust
-        'rust-analyzer',
         'rustfmt',
 
         -- File Formats
@@ -181,21 +171,16 @@ return {
         'proselint',
 
         -- Shell
-        'bash-language-server',
         'beautysh',
         'shfmt',
         'shellcheck',
         'shellharden',
 
         -- Others
-        'tailwindcss-language-server',
-        'css-lsp',
         'codespell',
         'dockerfile-language-server',
         'dot-language-server',
         'editorconfig-checker',
-        'html-lsp',
-        'emmet-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
