@@ -58,6 +58,7 @@ return {
         delete_to_trash = true,
         keymaps = {
           ['<C-h>'] = false,
+          ['<C-l>'] = false,
           ['<M-h>'] = 'actions.select_split',
         },
         view_options = {

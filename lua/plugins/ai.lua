@@ -15,6 +15,7 @@ return {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'main',
     cmd = 'CopilotChat',
+    build = 'make tiktoken',
     opts = function()
       local user = vim.env.USER or 'User'
       user = user:sub(1, 1):upper() .. user:sub(2)
@@ -23,6 +24,11 @@ return {
         model = 'gemini-2.5-pro',
         question_header = '  ' .. user .. ' ',
         answer_header = '  Copilot ',
+        highlight_headers = false,
+        error_header = '> [!ERROR] Error',
+        mappings = {
+          reset = false,
+        },
         window = {
           width = 0.4,
         },
