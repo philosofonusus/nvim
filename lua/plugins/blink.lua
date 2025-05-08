@@ -11,7 +11,7 @@ return {
     dependencies = {
       'rafamadriz/friendly-snippets',
       'saghen/blink.compat',
-      'giuxtaposition/blink-cmp-copilot',
+      'fang2hou/blink-copilot',
     },
     version = 'v0.*', -- use a release tag to download pre-built binaries
     opts = {
@@ -64,16 +64,9 @@ return {
           lsp = { score_offset = 99, name = 'lsp', module = 'blink.cmp.sources.lsp' },
           copilot = {
             name = 'copilot',
-            module = 'blink-cmp-copilot',
+            module = 'blink-copilot',
             score_offset = 98,
             async = true,
-            override = {
-              get_trigger_characters = function(self)
-                local trigger_characters = self:get_trigger_characters()
-                vim.list_extend(trigger_characters, { '\n', '\t', ' ' })
-                return trigger_characters
-              end,
-            },
             transform_items = function(_, items)
               local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
               local kind_idx = #CompletionItemKind + 1
