@@ -44,7 +44,7 @@
   "scratch-runner.nvim": { "branch": "master", "commit": "ec19b4836b37a5c078a15141231e54baeca4d4bb" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "tailwind-tools": { "branch": "master", "commit": "4da9a1d1ae08854f4724eb938e4b3216c8f2d9e1" },
-  "timber.nvim": { "branch": "main", "commit": "1d53d1718de9f0fbc84f7c993651b6bd5fb0fb95" },
+  "timber.nvim": { "branch": "main", "commit": "93f497aa4af3dae6d8c3ecca28e95089a9948bce" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
   "tsc.nvim": { "branch": "main", "commit": "5bd25bb5c399b6dc5c00392ade6ac6198534b53a" },

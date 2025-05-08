@@ -7,7 +7,11 @@ return {
       require('copilot').setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
-        copilot_model = 'gpt-4o-copilot',
+        filetypes = {
+          markdown = true,
+          help = true,
+        },
+        -- copilot_model = 'gpt-4o-copilot',
       }
     end,
   },
