@@ -19,9 +19,6 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
 
--- Enable break indent
-vim.opt.breakindent = true
-
 -- Save undo history
 vim.opt.undofile = true
 
@@ -71,6 +68,7 @@ vim.opt.wildignore:append { '*/node_modules/*,*/.history/*' }
 -- disable wrapping by default
 vim.opt.wrap = false
 
+-- indentation settings
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
