@@ -51,7 +51,7 @@ return {
         desc = 'Find Files',
       },
       {
-        '<leader>gr',
+        '<leader>gf',
         function()
           Snacks.picker.lsp_references()
         end,
@@ -77,7 +77,14 @@ return {
         function()
           Snacks.picker.lsp_symbols()
         end,
-        desc = 'LSP Symbols',
+        desc = 'LSP Document Symbols',
+      },
+      {
+        '<leader>fsw',
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = 'LSP Workspace Symbols',
       },
       {
         '<leader>fc',
