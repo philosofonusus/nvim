@@ -60,8 +60,13 @@ return {
       },
       sources = {
         providers = {
-          ecolog = { score_offset = 100, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          ecolog = { score_offset = 101, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
           lsp = { score_offset = 99, name = 'lsp', module = 'blink.cmp.sources.lsp' },
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            score_offset = 100,
+          },
           copilot = {
             name = 'copilot',
             module = 'blink-copilot',
@@ -78,7 +83,7 @@ return {
             end,
           },
         },
-        default = { 'ecolog', 'copilot', 'lsp', 'snippets', 'path', 'buffer' },
+        default = { 'ecolog', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
         per_filetype = {
           sql = { 'vim-dadbod-completion', 'buffer' },
         },
