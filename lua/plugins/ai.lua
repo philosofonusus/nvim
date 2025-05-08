@@ -16,81 +16,94 @@ return {
     end,
   },
   {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'main',
-    cmd = 'CopilotChat',
-    build = 'make tiktoken',
-    opts = function()
-      local user = vim.env.USER or 'User'
-      user = user:sub(1, 1):upper() .. user:sub(2)
-      return {
-        auto_insert_mode = false,
-        model = 'gemini-2.5-pro',
-        question_header = '  ' .. user .. ' ',
-        answer_header = '  Copilot ',
-        highlight_headers = false,
-        error_header = '> [!ERROR] Error',
-        mappings = {
-          reset = false,
-        },
-        window = {
-          width = 0.4,
+    'ravitemer/mcphub.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    -- uncomment the following line to load hub lazily
+    --cmd = "MCPHub",  -- lazy load
+    build = 'npm install -g mcp-hub@latest',
+    config = function()
+      require('mcphub').setup {
+        extensions = {
+          avante = {
+            make_slash_commands = true,
+          },
         },
       }
     end,
+  },
+  {
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false,
+    opts = {
+      provider = 'copilot',
+      copilot = {
+        model = 'gemini-2.5-pro',
+      },
+      hints = {
+        enabled = false,
+      },
+      windows = {
+        edit = {
+          start_insert = false,
+        },
+        ask = {
+          start_insert = false,
+        },
+      },
+      file_selector = {
+        provider = 'snacks',
+      },
+      disabled_tools = {
+        'list_files',
+        'search_files',
+        'read_file',
+        'create_file',
+        'rename_file',
+        'delete_file',
+        'create_dir',
+        'rename_dir',
+        'delete_dir',
+        'bash',
+      },
+      system_prompt = function()
+        local hub = require('mcphub').get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      custom_tools = function()
+        return {
+          require('mcphub.extensions.avante').mcp_tool(),
+        }
+      end,
+    },
     keys = {
-      { '<leader>a', '', desc = '+ai', mode = { 'n', 'v' } },
+      { '<leader>ax', '<cmd>AvanteClear<cr>', { desc = 'Avante clear chat history' } },
+    },
+    build = 'make',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'zbirenbaum/copilot.lua',
+      'folke/snacks.nvim',
+      'ravitemer/mcphub.nvim',
+      'MeanderingProgrammer/render-markdown.nvim',
       {
-        '<leader>aa',
-        function()
-          return require('CopilotChat').toggle()
-        end,
-        desc = 'Toggle (CopilotChat)',
-        mode = { 'n', 'v' },
-      },
-      {
-        '<leader>ax',
-        function()
-          return require('CopilotChat').reset()
-        end,
-        desc = 'Clear (CopilotChat)',
-        mode = { 'n', 'v' },
-      },
-      {
-        '<leader>aq',
-        function()
-          vim.ui.input({
-            prompt = 'Quick Chat: ',
-          }, function(input)
-            if input ~= '' then
-              require('CopilotChat').ask(input)
-            end
-          end)
-        end,
-        desc = 'Quick Chat (CopilotChat)',
-        mode = { 'n', 'v' },
-      },
-      {
-        '<leader>ap',
-        function()
-          require('CopilotChat').select_prompt()
-        end,
-        desc = 'Prompt Actions (CopilotChat)',
-        mode = { 'n', 'v' },
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+          },
+        },
       },
     },
-    config = function(_, opts)
-      local chat = require 'CopilotChat'
-
-      vim.api.nvim_create_autocmd('BufEnter', {
-        pattern = 'copilot-chat',
-        callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
-        end,
-      })
-
-      chat.setup(opts)
-    end,
   },
 }

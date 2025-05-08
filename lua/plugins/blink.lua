@@ -1,3 +1,6 @@
+vim.api.nvim_set_hl(0, 'BlinkCmpKindAvanteCmd', { default = false, fg = '#89b4fa' })
+vim.api.nvim_set_hl(0, 'BlinkCmpKindAvanteMention', { default = false, fg = '#89b4fa' })
+
 return {
   {
     'saghen/blink.compat',
@@ -12,6 +15,7 @@ return {
       'rafamadriz/friendly-snippets',
       'saghen/blink.compat',
       'fang2hou/blink-copilot',
+      'Kaiser-Yang/blink-cmp-avante',
     },
     version = 'v0.*', -- use a release tag to download pre-built binaries
     opts = {
@@ -22,7 +26,11 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
         kind_icons = {
+          AvanteCmd = '',
+          AvanteMention = '',
+
           Copilot = '',
+
           Text = '󰉿',
           Method = '󰊕',
           Function = '󰊕',
@@ -60,7 +68,7 @@ return {
       },
       sources = {
         providers = {
-          ecolog = { score_offset = 101, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
+          ecolog = { score_offset = 102, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
           lsp = { score_offset = 99, name = 'lsp', module = 'blink.cmp.sources.lsp' },
           lazydev = {
             name = 'LazyDev',
@@ -82,8 +90,14 @@ return {
               return items
             end,
           },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {},
+            score_offset = 101,
+          },
         },
-        default = { 'ecolog', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
+        default = { 'ecolog', 'avante', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
         per_filetype = {
           sql = { 'vim-dadbod-completion', 'buffer' },
         },
