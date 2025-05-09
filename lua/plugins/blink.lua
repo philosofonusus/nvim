@@ -96,10 +96,11 @@ return {
             opts = {},
             score_offset = 101,
           },
+          dadbod = { name = 'dadbod', module = 'vim_dadbod_completion.blink' },
         },
         default = { 'ecolog', 'avante', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
         per_filetype = {
-          sql = { 'vim-dadbod-completion', 'buffer' },
+          sql = { 'snippets', 'dadbod', 'buffer' },
         },
       },
       completion = {
