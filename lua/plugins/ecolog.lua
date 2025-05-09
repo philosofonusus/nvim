@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/projects/ecolog.nvim',
+    't3ntxcl3s/ecolog.nvim',
     keys = {
       { '<leader>el', '<Cmd>EcologShelterLinePeek<cr>', desc = 'Ecolog peek line' },
       { '<leader>e', '', desc = '+ecolog', mode = { 'n', 'v' } },
