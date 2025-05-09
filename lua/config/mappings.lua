@@ -45,6 +45,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Co
 -- comments
 vim.keymap.set({ 'n', 'v' }, '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
 
+-- Primeagen's greatest remap ever
+vim.keymap.set('x', '<leader>p', [["_dP]])
+
 -- Press 'S' for quick find/replace for the word under the cursor
 vim.keymap.set('n', 'S', function()
   local cmd = ':%s/<C-r><C-w>/<C-r><C-w>/gI<Left><Left><Left>'
