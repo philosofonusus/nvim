@@ -1,3 +1,11 @@
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'dbui',
+  callback = function()
+    vim.bo.shiftwidth = 2
+  end,
+  desc = 'Set shiftwidth for DBUI buffers',
+})
+
 return {
   {
     'kristijanhusak/vim-dadbod-ui',
