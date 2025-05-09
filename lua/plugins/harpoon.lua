@@ -51,13 +51,6 @@ return {
           end,
           desc = 'Add buffer to harpoon',
         },
-        {
-          '<leader>hd',
-          function()
-            harpoon:list():remove()
-          end,
-          desc = 'Add buffer to harpoon',
-        },
       }
     end,
     config = function(_, opts)
