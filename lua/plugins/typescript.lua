@@ -10,7 +10,7 @@ return {
     opts = {},
     keys = {
       { '<leader>oi', '<cmd>TSToolsOrganizeImports<cr>', desc = 'Organize Imports' },
-      { '<leader>ru', '<cmd>TSToolsOrganizeImports<cr>', desc = 'Remove unused statements' },
+      { '<leader>ru', '<cmd>TSToolsRemoveUnused<cr>', desc = 'Remove unused statements' },
       { '<leader>ami', '<cmd>TSToolsAddMissingImports<cr>', desc = 'Add Missing Imports' },
     },
     config = function()
@@ -20,7 +20,8 @@ return {
       require('typescript-tools').setup {
         capabilities = capabilities,
         handlers = {
-          ['textDocument/publishDiagnostics'] = api.filter_diagnostics { 80006 },
+          -- eslint handles 6133, 1109, 6192, 6196 (unused vars, imports, declarations)
+          ['textDocument/publishDiagnostics'] = api.filter_diagnostics { 80006, 6133, 1109, 6192, 6196 },
         },
         settings = {
           jsx_close_tag = {
