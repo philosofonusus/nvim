@@ -11,6 +11,7 @@ return {
       'Kaiser-Yang/blink-cmp-avante',
       {
         'L3MON4D3/LuaSnip',
+        build = 'make install_jsregexp',
         version = 'v2.*',
         dependencies = 'rafamadriz/friendly-snippets',
         opts = { history = true, updateevents = 'TextChanged,TextChangedI' },
