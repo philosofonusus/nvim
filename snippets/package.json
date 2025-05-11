@@ -1,8 +1,5 @@
 {
-  "name": "snips",
-  "engines": {
-    "vscode": "^1.11.0"
-  },
+  "name": "personal-snippets",
   "contributes": {
     "snippets": [
       {

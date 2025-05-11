@@ -9,6 +9,32 @@ return {
       'rafamadriz/friendly-snippets',
       'fang2hou/blink-copilot',
       'Kaiser-Yang/blink-cmp-avante',
+      {
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
+        dependencies = 'rafamadriz/friendly-snippets',
+        opts = { history = true, updateevents = 'TextChanged,TextChangedI' },
+        config = function(_, opts)
+          require('luasnip').config.set_config(opts)
+          require('luasnip.loaders.from_vscode').lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
+          require('luasnip.loaders.from_vscode').lazy_load { paths = vim.g.vscode_snippets_path or '' }
+          require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } }
+
+          require('luasnip.loaders.from_snipmate').load()
+          require('luasnip.loaders.from_snipmate').lazy_load { paths = vim.g.snipmate_snippets_path or '' }
+
+          require('luasnip.loaders.from_lua').load()
+          require('luasnip.loaders.from_lua').lazy_load { paths = vim.g.lua_snippets_path or '' }
+
+          vim.api.nvim_create_autocmd('InsertLeave', {
+            callback = function()
+              if require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()] and not require('luasnip').session.jump_active then
+                require('luasnip').unlink_current()
+              end
+            end,
+          })
+        end,
+      },
     },
     version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
@@ -58,6 +84,9 @@ return {
       },
       signature = {
         enabled = true,
+      },
+      snippets = {
+        preset = 'luasnip',
       },
       sources = {
         providers = {
@@ -117,31 +146,6 @@ return {
         },
       },
     },
-  },
-  {
-    'L3MON4D3/LuaSnip',
-    dependencies = 'rafamadriz/friendly-snippets',
-    opts = { history = true, updateevents = 'TextChanged,TextChangedI' },
-    config = function(_, opts)
-      require('luasnip').config.set_config(opts)
-      require('luasnip.loaders.from_vscode').lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
-      require('luasnip.loaders.from_vscode').lazy_load { paths = vim.g.vscode_snippets_path or '' }
-      require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } }
-
-      require('luasnip.loaders.from_snipmate').load()
-      require('luasnip.loaders.from_snipmate').lazy_load { paths = vim.g.snipmate_snippets_path or '' }
-
-      require('luasnip.loaders.from_lua').load()
-      require('luasnip.loaders.from_lua').lazy_load { paths = vim.g.lua_snippets_path or '' }
-
-      vim.api.nvim_create_autocmd('InsertLeave', {
-        callback = function()
-          if require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()] and not require('luasnip').session.jump_active then
-            require('luasnip').unlink_current()
-          end
-        end,
-      })
-    end,
   },
 }
 -- vim: ts=2 sts=2 sw=2 et
