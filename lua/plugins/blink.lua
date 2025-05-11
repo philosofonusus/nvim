@@ -3,21 +3,14 @@ vim.api.nvim_set_hl(0, 'BlinkCmpKindAvanteMention', { default = false, fg = '#89
 
 return {
   {
-    'saghen/blink.compat',
-    version = '*',
-    lazy = true,
-    opts = {},
-  },
-  {
     'saghen/blink.cmp',
     lazy = false,
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'saghen/blink.compat',
       'fang2hou/blink-copilot',
       'Kaiser-Yang/blink-cmp-avante',
     },
-    version = 'v0.*', -- use a release tag to download pre-built binaries
+    version = '1.*', -- use a release tag to download pre-built binaries
     opts = {
       keymap = {
         preset = 'default',
