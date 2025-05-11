@@ -1,13 +1,32 @@
 local ft = { 'markdown', 'Avante' }
 
 return {
-  'MeanderingProgrammer/render-markdown.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
-  ft = ft,
-  opts = {
-    completions = { blink = { enabled = true } },
-    file_types = ft,
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    ft = ft,
+    opts = {
+      completions = { blink = { enabled = true } },
+      file_types = ft,
+    },
+  },
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'cd app && npm install',
+    keys = {
+      {
+        '<leader>mp',
+        ft = 'markdown',
+        '<cmd>MarkdownPreviewToggle<cr>',
+        desc = 'Markdown Preview',
+      },
+    },
+    init = function()
+      vim.g.mkdp_filetypes = ft
+    end,
+    ft = ft,
   },
 }
