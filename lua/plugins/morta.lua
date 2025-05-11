@@ -1,6 +1,6 @@
 return {
   {
-    't3ntxcl3s/morta.nvim',
+    dir = '~/projects/morta.nvim',
     name = 'morta',
     priority = 1000,
     opts = {},

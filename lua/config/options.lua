@@ -110,6 +110,8 @@ vim.filetype.add {
   },
 }
 
-vim.diagnostic.config { virtual_text = true }
+vim.diagnostic.config {
+  virtual_text = true,
+}
 
 -- vim: ts=2 sts=2 sw=2 et

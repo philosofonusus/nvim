@@ -24,6 +24,8 @@ return {
       'saghen/blink.cmp',
     },
     config = function()
+      local helpers = require 'helpers'
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
         callback = function(event)
@@ -90,6 +92,23 @@ return {
               'postcss.config.js'
             )
             return root_pattern(fname)
+          end,
+        },
+        marksman = {
+          -- This solves the problem of Marksman exiting when a new hover doc buffer (from Lspsaga) is created credits to FlawlessCasual17
+          ---@param bufnr number
+          autostart = function(bufnr)
+            if helpers.is_lspsaga_peek_window(bufnr) then
+              return false
+            end
+            return true
+          end,
+          ---@param bufnr number
+          enable = function(bufnr)
+            if helpers.is_lspsaga_peek_window(bufnr) then
+              return false
+            end
+            return true
           end,
         },
         emmet_language_server = {
