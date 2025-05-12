@@ -6,7 +6,6 @@ return {
     'saghen/blink.cmp',
     lazy = false,
     dependencies = {
-      'rafamadriz/friendly-snippets',
       'fang2hou/blink-copilot',
       'Kaiser-Yang/blink-cmp-avante',
       {
@@ -26,14 +25,6 @@ return {
 
           require('luasnip.loaders.from_lua').load()
           require('luasnip.loaders.from_lua').lazy_load { paths = vim.g.lua_snippets_path or '' }
-
-          vim.api.nvim_create_autocmd('InsertLeave', {
-            callback = function()
-              if require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()] and not require('luasnip').session.jump_active then
-                require('luasnip').unlink_current()
-              end
-            end,
-          })
         end,
       },
     },
