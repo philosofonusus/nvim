@@ -39,9 +39,11 @@ return {
     version = false,
     opts = {
       provider = 'copilot',
+      auto_suggestions_provider = 'copilot',
       copilot = {
         model = 'gemini-2.5-pro',
       },
+      behaviour = { auto_suggestions = true, enable_cursor_planning_mode = true },
       hints = {
         enabled = false,
       },
@@ -52,6 +54,7 @@ return {
         ask = {
           start_insert = false,
         },
+        relativenumber = true,
       },
       file_selector = {
         provider = 'snacks',
