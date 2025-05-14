@@ -52,47 +52,18 @@ return {
         desc = 'Find Files',
       },
       {
-        '<leader>gf',
-        function()
-          Snacks.picker.lsp_references()
-        end,
-        nowait = true,
-        desc = 'References',
-      },
-      {
-        '<leader>gi',
-        function()
-          Snacks.picker.lsp_implementations()
-        end,
-        desc = 'Goto Implementation',
-      },
-      {
-        '<leader>gt',
-        function()
-          Snacks.picker.lsp_type_definitions()
-        end,
-        desc = 'Goto T[y]pe Definition',
-      },
-      {
-        '<leader>fsd',
-        function()
-          Snacks.picker.lsp_symbols()
-        end,
-        desc = 'LSP Document Symbols',
-      },
-      {
-        '<leader>fsw',
-        function()
-          Snacks.picker.lsp_workspace_symbols()
-        end,
-        desc = 'LSP Workspace Symbols',
-      },
-      {
         '<leader>fc',
         function()
           Snacks.picker.commands()
         end,
-        desc = 'Commands',
+        desc = 'Find Commands',
+      },
+      {
+        '<leader>fco',
+        function()
+          Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
+        end,
+        desc = 'Find Config File',
       },
       {
         '<leader>fh',
@@ -118,7 +89,7 @@ return {
       {
         '<leader>n',
         function()
-          Snacks.notifier.show_history()
+          Snacks.picker.notifications()
         end,
         desc = 'Notification History',
       },
@@ -172,6 +143,51 @@ return {
         end,
         desc = 'Prev Reference',
         mode = { 'n', 't' },
+      },
+      -- lsp stuff
+      {
+        '<leader>gD',
+        function()
+          Snacks.picker.lsp_declarations()
+        end,
+        desc = 'Goto Declaration',
+      },
+      {
+        '<leader>gr',
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = 'References',
+      },
+      {
+        '<leader>gI',
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = 'Goto Implementation',
+      },
+      {
+        '<leader>gt',
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = 'Goto [T]ype Definition',
+      },
+      -- symbols
+      {
+        '<leader>fsd',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'LSP Document Symbols',
+      },
+      {
+        '<leader>fsw',
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = 'LSP Workspace Symbols',
       },
     },
     init = function()

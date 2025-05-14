@@ -59,6 +59,7 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       local on_publish_diagnostics = vim.lsp.diagnostic.on_publish_diagnostics
+
       local servers = {
         html = {},
         cssls = {},
@@ -219,7 +220,7 @@ return {
         'dot-language-server',
         'editorconfig-checker',
         'html-lsp',
-        'astro',
+        'astro-language-server',
         'deno',
         'emmet-language-server',
       })
@@ -230,10 +231,12 @@ return {
       end, {})
 
       require('mason-lspconfig').setup {
+        automatic_installation = false,
+        ensure_installed = {},
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            server.capabilities = capabilities
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
         },
