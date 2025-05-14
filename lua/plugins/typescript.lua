@@ -1,6 +1,6 @@
 return {
   {
-    'pmizio/typescript-tools.nvim',
+    't3ntxcl3s/typescript-tools.nvim',
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',

@@ -39,9 +39,6 @@ vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- clear highlights on escape
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'General Clear highlights' })
 
---code actions
-vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
-
 -- comments
 vim.keymap.set({ 'n', 'v' }, '<leader>/', 'gcc', { desc = 'Toggle Comment', remap = true })
 
