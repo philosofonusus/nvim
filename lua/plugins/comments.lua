@@ -87,7 +87,7 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       {
-        '<leader>st',
+        '<leader>ft',
         function()
           Snacks.picker.todo_comments()
         end,

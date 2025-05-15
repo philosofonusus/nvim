@@ -39,5 +39,23 @@ return {
       },
     },
   },
+  {
+    'Wansmer/treesj',
+    opts = { use_default_keymaps = false },
+    cmd = {
+      'TSJToggle',
+      'TSJJoin',
+      'TSJSplit',
+    },
+    keys = {
+      {
+        '<leader>m',
+        '<CMD>TSJToggle<CR>',
+        {
+          desc = 'Toggle TreeSitter join/split',
+        },
+      },
+    },
+  },
 }
 -- vim: ts=2 sts=2 sw=2 et
