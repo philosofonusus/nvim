@@ -41,7 +41,7 @@ return {
       provider = 'copilot',
       auto_suggestions_provider = 'copilot',
       copilot = {
-        model = 'gemini-2.5-pro',
+        model = 'claude-3.7-sonnet',
       },
       behaviour = { auto_suggestions = true, enable_cursor_planning_mode = true },
       hints = {
