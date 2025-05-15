@@ -1,4 +1,4 @@
-local ft = { 'markdown', 'Avante' }
+local ft = { 'markdown', 'codecompanion' }
 
 return {
   {

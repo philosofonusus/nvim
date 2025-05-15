@@ -1,13 +1,9 @@
-vim.api.nvim_set_hl(0, 'BlinkCmpKindAvanteCmd', { default = false, fg = '#89b4fa' })
-vim.api.nvim_set_hl(0, 'BlinkCmpKindAvanteMention', { default = false, fg = '#89b4fa' })
-
 return {
   {
     'saghen/blink.cmp',
     lazy = false,
     dependencies = {
       'fang2hou/blink-copilot',
-      'Kaiser-Yang/blink-cmp-avante',
       {
         'L3MON4D3/LuaSnip',
         build = 'make install_jsregexp',
@@ -37,9 +33,6 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
         kind_icons = {
-          AvanteCmd = '',
-          AvanteMention = '',
-
           Copilot = '',
 
           Text = '󰉿',
@@ -83,12 +76,6 @@ return {
       sources = {
         providers = {
           ecolog = { score_offset = 102, name = 'ecolog', module = 'ecolog.integrations.cmp.blink_cmp' },
-          avante = {
-            module = 'blink-cmp-avante',
-            name = 'Avante',
-            opts = {},
-            score_offset = 101,
-          },
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
@@ -112,8 +99,9 @@ return {
           },
           dadbod = { name = 'dadbod', module = 'vim_dadbod_completion.blink' },
         },
-        default = { 'ecolog', 'avante', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
+        default = { 'ecolog', 'copilot', 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
         per_filetype = {
+          codecompanion = { 'codecompanion' },
           sql = { 'snippets', 'dadbod', 'buffer' },
         },
       },
