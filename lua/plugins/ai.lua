@@ -20,7 +20,7 @@ return {
     keys = {
       {
         '<Leader>aa',
-        '<cmd>CodeCompanionChat Toggle<CR>',
+        '<cmd>CodeCompanionActions<CR>',
         {
           description = 'toggle a chat buffer',
         },
@@ -41,13 +41,23 @@ return {
         mode = { 'v' },
       },
     },
+    cmd = { 'CodeCompanion', 'CodeCompanionActions', 'CodeCompanionChat' },
+    init = function()
+      vim.g.codecompanion_auto_tool_mode = true
+      require('plugins.custom.spinner'):init()
+    end,
     opts = {
+      display = {
+        diff = {
+          provider = 'mini_diff',
+        },
+      },
       adapters = {
         copilot = function()
           return require('codecompanion.adapters').extend('copilot', {
             schema = {
               model = {
-                default = 'gemini-2.5-pro',
+                default = 'claude-3.7-sonnet',
               },
             },
           })
@@ -57,6 +67,12 @@ return {
         chat = {
           adapter = 'copilot',
           start_in_insert_mode = false,
+          tools = {
+            opts = {
+              auto_submit_errors = true,
+              auto_submit_success = true,
+            },
+          },
           roles = {
             user = 'tentacles',
           },
@@ -125,7 +141,6 @@ return {
             add_tool = true,
           },
         },
-
         mcphub = {
           callback = 'mcphub.extensions.codecompanion',
           opts = {
@@ -142,6 +157,7 @@ return {
       'ravitemer/mcphub.nvim',
       'j-hui/fidget.nvim',
       'ravitemer/codecompanion-history.nvim', -- Save and load conversation history
+      'echasnovski/mini.diff',
       {
         'ravitemer/mcphub.nvim', -- Manage MCP servers
         cmd = 'MCPHub',

@@ -1,13 +1,13 @@
 # My neovim config <3
 
 ```
-Startuptime: 78.08ms
+Startuptime: 90.87ms
 
 Based on the actual CPU time of the Neovim process till UIEnter.
 This is more accurate than `nvim --startuptime`.
-  LazyStart 14.53ms
-  LazyDone  66.94ms (+52.4ms)
-  UIEnter   78.08ms (+11.15ms)
+  LazyStart 9.78ms
+  LazyDone  86.35ms (+76.57ms)
+  UIEnter   90.87ms (+4.52ms)
 ```
 
 ## Introduction
@@ -15,10 +15,12 @@ This is more accurate than `nvim --startuptime`.
 This repository contains my personal neovim configuration that I use in day-to-day work.
 Since I'm actively using it, it is in my very own interest to maintain and fix any issues that may arise.
 
+It contains a lot of "hacks" and little known tricks, I have accumulated over the years. To make experience better when working with certain plugins.
+
 I have went over numerous neovim configs and combined all the best autocommands, keymaps and options that work for me.
 Even though it is opionated, it has very good balance between ready to be used now, and providing good defaults and starting point for your own configuration.
 
-It contains all the useful plugins and configurations for web-dev and general programming.
+It contains all the useful plugins and configurations for web-dev, ai augmented development and general programming.
 
 ## Installation
 
