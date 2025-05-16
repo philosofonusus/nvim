@@ -52,6 +52,13 @@ return {
         desc = 'Find Files',
       },
       {
+        '<leader>fr',
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = 'Resume',
+      },
+      {
         '<leader>fc',
         function()
           Snacks.picker.commands()
