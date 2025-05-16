@@ -27,7 +27,15 @@ return {
         mode = { 'n', 'v' },
       },
       {
-        '<LocalLeader>aa',
+        '<Leader>ac',
+        '<cmd>CodeCompanionChat Toggle<CR>',
+        {
+          description = 'toggle a chat buffer',
+        },
+        mode = { 'n', 'v' },
+      },
+      {
+        '<LocalLeader>ac',
         '<cmd>CodeCompanionChat Add<CR>',
         { description = 'Add code to a chat buffer' },
         mode = { 'v' },
@@ -53,20 +61,51 @@ return {
             user = 'tentacles',
           },
           slash_commands = {
+            ['git_files'] = {
+              description = 'List git files',
+              ---@param chat CodeCompanion.Chat
+              callback = function(chat)
+                local handle = io.popen 'git ls-files'
+                if handle ~= nil then
+                  local result = handle:read '*a'
+                  handle:close()
+                  chat:add_reference({ role = 'user', content = result }, 'git', '<git_files>')
+                else
+                  return vim.notify('No git files available', vim.log.levels.INFO, { title = 'CodeCompanion' })
+                end
+              end,
+              opts = {
+                contains_code = false,
+              },
+            },
+            ['file'] = {
+              callback = 'strategies.chat.slash_commands.file',
+              description = 'Select a file using Snacks picker',
+              opts = {
+                provider = 'snacks',
+                contains_code = true,
+              },
+            },
             ['help'] = {
               opts = {
                 max_lines = 1000,
               },
             },
           },
-          tools = {
-            opts = {
-              auto_submit_success = false,
-              auto_submit_errors = false,
+        },
+        inline = {
+          adapter = 'copilot',
+          keymaps = {
+            accept_change = {
+              modes = { n = 'ga' },
+              description = 'Accept the suggested change',
+            },
+            reject_change = {
+              modes = { n = 'gr' },
+              description = 'Reject the suggested change',
             },
           },
         },
-        inline = { adapter = 'copilot' },
       },
       extensions = {
         history = {
