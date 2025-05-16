@@ -1,0 +1,583 @@
+{
+  "drizzle-table": {
+    "description": "Drizzle basic table schema definition",
+    "prefix": ["dz_pgTable", "pgTable"],
+    "body": [
+      "export const ${1:tableName} = pgTable('${1:tableName}', {",
+      "\tid: serial('id').primaryKey(),",
+      "\tcreatedAt: timestamp('created_at').defaultNow().notNull(),",
+      "\tupdatedAt: timestamp('updated_at').defaultNow().notNull(),",
+      "});"
+    ]
+  },
+  "drizzle-schema": {
+    "description": "Drizzle complete table schema definition",
+    "prefix": ["dz_pgSchema", "pgSchema"],
+    "body": [
+      "export const ${1:tableName} = pgTable('${1:tableName}', {",
+      "\tid: serial('id').primaryKey(),",
+      "\tcreatedAt: timestamp('created_at').defaultNow().notNull(),",
+      "\tupdatedAt: timestamp('updated_at').defaultNow().notNull(),",
+      "});",
+      "",
+      "export type ${1/(.*)/${1:/capitalize}/}Type = typeof ${1:tableName}.$$inferSelect;",
+      "export type ${1/(.*)/${1:/capitalize}/}InsertType = typeof ${1:tableName}.$$inferInsert;",
+      "",
+      "export const ${1:tableName}Relations = relations(${1:tableName}, ({ one, many }) => ({",
+      "}));"
+    ]
+  },
+  "id serial primary key": {
+    "description": "Drizzle ID field with serial type",
+    "prefix": ["dz_id_serial", "id serial"],
+    "body": "id: serial('id').primaryKey(),"
+  },
+  "id bigint primary key": {
+    "description": "Drizzle ID field with bigint type",
+    "prefix": ["dz_id_bigint", "id bigint"],
+    "body": "id: bigint('id', { mode: 'number' }).primaryKey().autoincrement(),"
+  },
+  "binary": {
+    "description": "Drizzle binary field",
+    "prefix": ["dz_binary", "binary"],
+    "body": "${1:name}: binary('${1:name}', { length: ${2:length} }),"
+  },
+  "bigserial": {
+    "description": "Drizzle bigserial field",
+    "prefix": ["dz_bigserial", "bigserial"],
+    "body": "${1:name}: bigserial('${1:name}', { mode: '${2:mode}'}),"
+  },
+  "boolean": {
+    "description": "Drizzle boolean field",
+    "prefix": ["dz_boolean", "boolean"],
+    "body": "${1:name}: boolean('${1:name}'),"
+  },
+  "blob": {
+    "description": "Drizzle blob field",
+    "prefix": ["dz_blob", "blob"],
+    "body": "${1:name}: blob('${1:name}', { mode: '${2:mode}' }),"
+  },
+  "char": {
+    "description": "Drizzle char field",
+    "prefix": ["dz_char", "char"],
+    "body": "${1:name}: char('${1:name}', { length: ${2:length} }),"
+  },
+  "cidr": {
+    "description": "Drizzle cidr field",
+    "prefix": ["dz_cidr", "cidr"],
+    "body": "${1:name}: cidr('${1:name}'),"
+  },
+  "date": {
+    "description": "Drizzle date field",
+    "prefix": ["dz_date", "date"],
+    "body": "${1:name}: date('${1:name}', { mode: '${2:mode}' }),"
+  },
+  "datetime": {
+    "description": "Drizzle datetime field",
+    "prefix": ["dz_datetime", "datetime"],
+    "body": "${1:name}: datetime('${1:name}', { mode: '${2:mode}' }),"
+  },
+  "decimal": {
+    "description": "Drizzle decimal field",
+    "prefix": ["dz_decimal", "decimal"],
+    "body": "${1:name}: decimal('${1:name}', { precision: ${2:precision}, scale: ${3:scale} }),"
+  },
+  "double": {
+    "description": "Drizzle double field",
+    "prefix": ["dz_double", "double"],
+    "body": "${1:name}: double('${1:name}', { precision: ${2:precision}, scale: ${3:scale} }),"
+  },
+  "doublePrecision": {
+    "description": "Drizzle doublePrecision field",
+    "prefix": ["dz_doublePrecision", "doublePrecision"],
+    "body": "${1:name}: doublePrecision('${1:name}'),"
+  },
+  "pgEnum": {
+    "description": "Drizzle pgEnum field",
+    "prefix": ["dz_pgEnum", "pgEnum"],
+    "body": "${1:name}: pgEnum(enumName: '${1:name}', values: [${2:values}]),"
+  },
+  "float": {
+    "description": "Drizzle float field",
+    "prefix": ["dz_float", "float"],
+    "body": "${1:name}: float('${1:name}'),"
+  },
+  "inet": {
+    "description": "Drizzle inet field",
+    "prefix": ["dz_inet", "inet"],
+    "body": "${1:name}: inet('${1:name}'),"
+  },
+  "int": {
+    "description": "Drizzle int field",
+    "prefix": ["dz_int", "int"],
+    "body": "${1:name}: int('${1:name}', { unsigned: ${2:true} }),"
+  },
+  "integer": {
+    "description": "Drizzle integer field",
+    "prefix": ["dz_integer", "integer"],
+    "body": "${1:name}: integer('${1:name}'),"
+  },
+  "interval": {
+    "description": "Drizzle interval field",
+    "prefix": ["dz_interval", "interval"],
+    "body": "${1:name}: interval('${1:name}', { fields: '${2:year}', precision: ${3:10} }),"
+  },
+  "json": {
+    "description": "Drizzle json field",
+    "prefix": ["dz_json", "json"],
+    "body": "${1:name}: json('${1:name}'),"
+  },
+  "jsonb": {
+    "description": "Drizzle jsonb field",
+    "prefix": ["dz_jsonb", "jsonb"],
+    "body": "${1:name}: jsonb('${1:name}'),"
+  },
+  "macaddr": {
+    "description": "Drizzle macaddr field",
+    "prefix": ["dz_macaddr", "macaddr"],
+    "body": "${1:name}: macaddr('${1:name}'),"
+  },
+  "macaddr8": {
+    "description": "Drizzle macaddr8 field",
+    "prefix": ["dz_macaddr8", "macaddr8"],
+    "body": "${1:name}: macaddr8('${1:name}'),"
+  },
+  "mediumint": {
+    "description": "Drizzle mediumint field",
+    "prefix": ["dz_mediumint", "mediumint"],
+    "body": "${1:name}: mediumint('${1:name}'),"
+  },
+  "numeric": {
+    "description": "Drizzle numeric field",
+    "prefix": ["dz_numeric", "numeric"],
+    "body": "${1:name}: numeric('${1:name}'),"
+  },
+  "real": {
+    "description": "Drizzle real field",
+    "prefix": ["dz_real", "real"],
+    "body": "${1:name}: real('${1:name}', { precision: ${2:precision}, scale: ${3:scale} }),"
+  },
+  "serial": {
+    "description": "Drizzle serial field",
+    "prefix": ["dz_serial", "serial"],
+    "body": "${1:name}: serial('${1:name}'),"
+  },
+  "smallint": {
+    "description": "Drizzle smallint field",
+    "prefix": ["dz_smallint", "smallint"],
+    "body": "${1:name}: smallint('${1:name}'),"
+  },
+  "smallserial": {
+    "description": "Drizzle smallserial field",
+    "prefix": ["dz_smallserial", "smallserial"],
+    "body": "${1:name}: smallserial('${1:name}'),"
+  },
+  "text": {
+    "description": "Drizzle text field",
+    "prefix": ["dz_text", "text"],
+    "body": "${1:name}: text('${1:name}'),"
+  },
+  "tinytext": {
+    "description": "Drizzle tinytext field",
+    "prefix": ["dz_tinytext", "tinytext"],
+    "body": "${1:name}: tinytext('${1:name}'),"
+  },
+  "mediumtext": {
+    "description": "Drizzle mediumtext field",
+    "prefix": ["dz_mediumtext", "mediumtext"],
+    "body": "${1:name}: mediumtext('${1:name}'),"
+  },
+  "longtext": {
+    "description": "Drizzle longtext field",
+    "prefix": ["dz_longtext", "longtext"],
+    "body": "${1:name}: longtext('${1:name}'),"
+  },
+  "time": {
+    "description": "Drizzle time field",
+    "prefix": ["dz_time", "time"],
+    "body": "${1:name}: time('${1:name}'),"
+  },
+  "timestamp": {
+    "description": "Drizzle timestamp field",
+    "prefix": ["dz_timestamp", "timestamp"],
+    "body": "${1:name}: timestamp('${1:name}', { mode: '${2:mode}' }),"
+  },
+  "tinyint": {
+    "description": "Drizzle tinyint field",
+    "prefix": ["dz_tinyint", "tinyint"],
+    "body": "${1:name}: tinyint('${1:name}'),"
+  },
+  "uuid": {
+    "description": "Drizzle uuid field",
+    "prefix": ["dz_uuid", "uuid"],
+    "body": "${1:name}: uuid('${1:name}'),"
+  },
+  "varbinary": {
+    "description": "Drizzle varbinary field",
+    "prefix": ["dz_varbinary", "varbinary"],
+    "body": "${1:name}: varbinary('${1:name}', { length: ${2:length} }),"
+  },
+  "varchar": {
+    "description": "Drizzle varchar field",
+    "prefix": ["dz_varchar", "varchar"],
+    "body": "${1:name}: varchar('${1:name}', { length: ${2:length} }),"
+  },
+  "year": {
+    "description": "Drizzle year field",
+    "prefix": ["dz_year", "year"],
+    "body": "${1:name}: year('${1:name}'),"
+  },
+  "references": {
+    "description": "Drizzle foreign key reference",
+    "prefix": ["dz_references", "int references"],
+    "body": "${1:name}Id: int('${1:name}_id').references(() => ${2:table}.${3:column}),"
+  },
+  "select": {
+    "description": "Drizzle select query",
+    "prefix": ["dz_select", "select"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.where(",
+      "\t\t$3,",
+      "\t);",
+      ""
+    ]
+  },
+  "selectDistinct": {
+    "description": "Drizzle select distinct query",
+    "prefix": ["dz_select_distinct", "selectDistinct"],
+    "body": [
+      "await db.selectDistinct({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.where(",
+      "\t\t$3,",
+      "\t);",
+      ""
+    ]
+  },
+  "selectDistinctOn": {
+    "description": "Drizzle select distinct on query",
+    "prefix": ["dz_select_distinct_on", "selectDistinctOn"],
+    "body": [
+      "await db.selectDistinctOn([",
+      "\t\t$1,",
+      "\t]), {",
+      "\t\t$2,",
+      "\t})",
+      "\t.from(${3:table})",
+      "\t.where(",
+      "\t\t$4,",
+      "\t);",
+      ""
+    ]
+  },
+  "limit & offset": {
+    "description": "Drizzle limit and offset query",
+    "prefix": ["dz_limit", "limit"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.limit(${3:limit})",
+      "\t.offset(${4:offset});",
+      ""
+    ]
+  },
+  "orderBy": {
+    "description": "Drizzle order by query",
+    "prefix": ["dz_order_by", "orderBy"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.orderBy(${3:column});",
+      ""
+    ]
+  },
+  "groupBy": {
+    "description": "Drizzle group by query",
+    "prefix": ["dz_group_by", "groupBy"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.groupBy(${3:column})",
+      "\t.having(({ $4 }) => $5);",
+      ""
+    ]
+  },
+  "$with": {
+    "description": "Drizzle $with query",
+    "prefix": ["dz_with", "$with"],
+    "body": [
+      "db.\\$with(${1:alias}).as(",
+      "\t\tdb.select({",
+      "\t\t\t$2,",
+      "\t\t})",
+      "\t\t.from(${3:table})",
+      "\t\t.where(",
+      "\t\t\t$4,",
+      "\t\t)",
+      "\t);",
+      ""
+    ]
+  },
+  "with": {
+    "description": "Drizzle with query",
+    "prefix": ["dz_with", "with"],
+    "body": [
+      "db.with(${1:alias})",
+      "\t.select({",
+      "\t\t$2,",
+      "\t})",
+      "\t.from(${1:alias})",
+      "\t.where(",
+      "\t\t$3,",
+      "\t)",
+      "\t.returning({",
+      "\t\t$4,",
+      "\t});",
+      ""
+    ]
+  },
+  "update": {
+    "description": "Drizzle update query",
+    "prefix": ["dz_update", "update"],
+    "body": [
+      "await db.update(${1:table}).set({",
+      "\t\t$2,",
+      "\t}).where(",
+      "\t\t$3,",
+      "\t);",
+      ""
+    ]
+  },
+  "insert": {
+    "description": "Drizzle insert query",
+    "prefix": ["dz_insert", "insert"],
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t});", ""]
+  },
+  "onConflictDoNothing": {
+    "description": "Drizzle insert with onConflictDoNothing",
+    "prefix": ["dz_on_conflict_do_nothing", "onConflictDoNothing"],
+    "body": [
+      "await db.insert(${1:table}).values({",
+      "\t\t$2,",
+      "\t}).onConflictDoNothing({",
+      "\t\ttarget: ${3:column},",
+      "\t});",
+      ""
+    ]
+  },
+  "onConflictDoUpdate": {
+    "description": "Drizzle insert with onConflictDoUpdate",
+    "prefix": ["dz_on_conflict_do_update", "onConflictDoUpdate"],
+    "body": [
+      "await db.insert(${1:table}).values({",
+      "\t\t$2,",
+      "\t}).onConflictDoUpdate({",
+      "\t\ttarget: ${3:column},",
+      "\t\ttargetWhere: {",
+      "\t\t\t$4,",
+      "\t\t},",
+      "\t\tset: {",
+      "\t\t\t$5,",
+      "\t\t},",
+      "\t\tsetWhere: {",
+      "\t\t\t$6,",
+      "\t\t},",
+      "\t});",
+      ""
+    ]
+  },
+  "onDuplicateKeyUpdate": {
+    "description": "Drizzle insert with onDuplicateKeyUpdate",
+    "prefix": ["dz_on_duplicate_key_update", "onDuplicateKeyUpdate"],
+    "body": [
+      "await db.insert(${1:table}).values({",
+      "\t\t$2,",
+      "\t}).onDuplicateKeyUpdate({",
+      "\t\tset: {",
+      "\t\t\t$3,",
+      "\t\t},",
+      "\t});",
+      ""
+    ]
+  },
+  "delete": {
+    "description": "Drizzle delete query",
+    "prefix": ["dz_delete", "delete"],
+    "body": ["await db.delete(${1:table}).where(", "\t\t$2,", "\t);", ""]
+  },
+  "leftJoin": {
+    "description": "Drizzle left join query",
+    "prefix": ["dz_left_join", "leftJoin"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.leftJoin(${3:table}, ${4:condition});",
+      ""
+    ]
+  },
+  "rightJoin": {
+    "description": "Drizzle right join query",
+    "prefix": ["dz_right_join", "rightJoin"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.rightJoin(${3:table}, ${4:condition});",
+      ""
+    ]
+  },
+  "innerJoin": {
+    "description": "Drizzle inner join query",
+    "prefix": ["dz_inner_join", "innerJoin"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.innerJoin(${3:table}, ${4:condition});",
+      ""
+    ]
+  },
+  "fullJoin": {
+    "description": "Drizzle full join query",
+    "prefix": ["dz_full_join", "fullJoin"],
+    "body": [
+      "await db.select({",
+      "\t\t$1,",
+      "\t})",
+      "\t.from(${2:table})",
+      "\t.fullJoin(${3:table}, ${4:condition});",
+      ""
+    ]
+  },
+  "eq": {
+    "description": "Drizzle equals operator",
+    "prefix": ["dz_eq", "eq"],
+    "body": "eq(${1:column}, ${2:value})"
+  },
+  "ne": {
+    "description": "Drizzle not equals operator",
+    "prefix": ["dz_ne", "ne"],
+    "body": "ne(${1:column}, ${2:value})"
+  },
+  "gt": {
+    "description": "Drizzle greater than operator",
+    "prefix": ["dz_gt", "gt"],
+    "body": "gt(${1:column}, ${2:value})"
+  },
+  "gte": {
+    "description": "Drizzle greater than or equals operator",
+    "prefix": ["dz_gte", "gte"],
+    "body": "gte(${1:column}, ${2:value})"
+  },
+  "lt": {
+    "description": "Drizzle less than operator",
+    "prefix": ["dz_lt", "lt"],
+    "body": "lt(${1:column}, ${2:value})"
+  },
+  "lte": {
+    "description": "Drizzle less than or equals operator",
+    "prefix": ["dz_lte", "lte"],
+    "body": "lte(${1:column}, ${2:value})"
+  },
+  "isNull": {
+    "description": "Drizzle isNull operator",
+    "prefix": ["dz_is_null", "isNull"],
+    "body": "isNull(${1:column})"
+  },
+  "isNotNull": {
+    "description": "Drizzle isNotNull operator",
+    "prefix": ["dz_is_not_null", "isNotNull"],
+    "body": "isNotNull(${1:column})"
+  },
+  "inArray": {
+    "description": "Drizzle inArray operator",
+    "prefix": ["dz_in_array", "inArray"],
+    "body": "inArray(${1:column}, ${2:array})"
+  },
+  "notInArray": {
+    "description": "Drizzle notInArray operator",
+    "prefix": ["dz_not_in_array", "notInArray"],
+    "body": "notInArray(${1:column}, ${2:array})"
+  },
+  "exists": {
+    "description": "Drizzle exists operator",
+    "prefix": ["dz_exists", "exists"],
+    "body": "exists(${1:column})"
+  },
+  "notExists": {
+    "description": "Drizzle notExists operator",
+    "prefix": ["dz_not_exists", "notExists"],
+    "body": "notExists(${1:column})"
+  },
+  "between": {
+    "description": "Drizzle between operator",
+    "prefix": ["dz_between", "between"],
+    "body": "between(${1:column}, ${2:from}, ${3:to})"
+  },
+  "notBetween": {
+    "description": "Drizzle notBetween operator",
+    "prefix": ["dz_not_between", "notBetween"],
+    "body": "notBetween(${1:column}, ${2:from}, ${3:to})"
+  },
+  "like": {
+    "description": "Drizzle like operator",
+    "prefix": ["dz_like", "like"],
+    "body": "like(${1:column}, ${2:value})"
+  },
+  "ilike": {
+    "description": "Drizzle ilike operator",
+    "prefix": ["dz_ilike", "ilike"],
+    "body": "ilike(${1:column}, ${2:value})"
+  },
+  "notIlike": {
+    "description": "Drizzle notIlike operator",
+    "prefix": ["dz_not_ilike", "notIlike"],
+    "body": "notIlike(${1:column}, ${2:value})"
+  },
+  "not": {
+    "description": "Drizzle not operator",
+    "prefix": ["dz_not", "not"],
+    "body": "not(${1:condition})"
+  },
+  "and": {
+    "description": "Drizzle and operator",
+    "prefix": ["dz_and", "and"],
+    "body": "and(${1:condition}, ${2:condition})"
+  },
+  "or": {
+    "description": "Drizzle or operator",
+    "prefix": ["dz_or", "or"],
+    "body": "or(${1:condition}, ${2:condition})"
+  },
+  "arrayContains": {
+    "description": "Drizzle arrayContains operator",
+    "prefix": ["dz_array_contains", "arrayContains"],
+    "body": "arrayContains(${1:column}, ${2:value})"
+  },
+  "arrayContained": {
+    "description": "Drizzle arrayContained operator",
+    "prefix": ["dz_array_contained", "arrayContained"],
+    "body": "arrayContained(${1:column}, ${2:value})"
+  },
+  "arrayOverlaps": {
+    "description": "Drizzle arrayOverlaps operator",
+    "prefix": ["dz_array_overlaps", "arrayOverlaps"],
+    "body": "arrayOverlaps(${1:column}, ${2:value})"
+  }
+}

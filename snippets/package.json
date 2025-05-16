@@ -5,6 +5,10 @@
       {
         "language": "css",
         "path": "./css.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./drizzle.json"
       }
     ]
   }
