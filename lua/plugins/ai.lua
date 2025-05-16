@@ -43,7 +43,6 @@ return {
     },
     cmd = { 'CodeCompanion', 'CodeCompanionActions', 'CodeCompanionChat' },
     init = function()
-      vim.g.codecompanion_auto_tool_mode = true
       require('plugins.custom.spinner'):init()
     end,
     opts = {
