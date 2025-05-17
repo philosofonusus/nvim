@@ -107,6 +107,7 @@ end
 vim.filetype.add {
   pattern = {
     ['%.env%.[%w_.-]+'] = 'sh',
+    ['nohup.out'] = 'log',
   },
 }
 
