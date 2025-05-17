@@ -56,7 +56,7 @@ return {
           return require('codecompanion.adapters').extend('copilot', {
             schema = {
               model = {
-                default = 'claude-3.7-sonnet',
+                default = 'gemini-2.5-pro',
               },
             },
           })
@@ -64,12 +64,12 @@ return {
       },
       strategies = {
         chat = {
-          adapter = 'copilot',
+          adapter = 'gemini',
           start_in_insert_mode = false,
           tools = {
             opts = {
               auto_submit_errors = true,
-              auto_submit_success = true,
+              auto_submit_success = false,
             },
           },
           roles = {
@@ -109,7 +109,7 @@ return {
           },
         },
         inline = {
-          adapter = 'copilot',
+          adapter = 'gemini',
           keymaps = {
             accept_change = {
               modes = { n = 'ga' },
