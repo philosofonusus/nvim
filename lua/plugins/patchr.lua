@@ -4,7 +4,7 @@ return {
   opts = {
     plugins = {
       ['typescript-tools.nvim'] = {
-        '/Users/tentacles/.config/nvim/patchr/typescript-tools.patch',
+        vim.fn.expand '~/.config/nvim/patches/typescript-tools.patch',
       },
     },
   },
