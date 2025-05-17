@@ -1,0 +1,99 @@
+diff --git a/lua/typescript-tools/integrations.lua b/lua/typescript-tools/integrations.lua
+index f46d304..fb02c7e 100644
+--- a/lua/typescript-tools/integrations.lua
++++ b/lua/typescript-tools/integrations.lua
+@@ -38,4 +38,64 @@ function M.telescope_picker(picker, callback)
+   }
+ end
+ 
++---@param opts table|nil Optional picker configuration
++---@param callback fun(err: boolean|nil, file: string?)
++function M.snacks_picker(opts, callback)
++  local ok, Snacks = pcall(require, "snacks")
++
++  if not ok then
++    vim.notify(
++      "snacks.nvim picker needs to be installed to call this integration",
++      vim.log.levels.WARN
++    )
++    callback(true, nil)
++    return
++  end
++
++  local picker_opts = {
++    title = "Pick a file",
++    finder = "files",
++    confirm = function(picker, item)
++      if item then
++        local file_path
++        if type(item) == "string" then
++          file_path = item
++        elseif type(item) == "table" then
++          file_path = item._path
++
++          if not file_path then
++            file_path = item.filename
++              or item.path
++              or item.value
++              or (item.file and vim.fs.joinpath(item.cwd or vim.loop.cwd(), item.file))
++          end
++        end
++
++        if file_path then
++          file_path = vim.fs.normalize(file_path)
++          picker:close()
++          callback(nil, file_path)
++        else
++          picker:close()
++          callback(true, nil)
++        end
++      else
++        picker:close()
++        callback(true, nil)
++      end
++    end,
++    cancel = function()
++      callback(true, nil)
++    end,
++  }
++
++  if opts then
++    for k, v in pairs(opts) do
++      picker_opts[k] = v
++    end
++  end
++
++  Snacks.picker.files(picker_opts)
++end
++
+ return M
+diff --git a/lua/typescript-tools/internal_commands.lua b/lua/typescript-tools/internal_commands.lua
+index 555dc74..1995d68 100644
+--- a/lua/typescript-tools/internal_commands.lua
++++ b/lua/typescript-tools/internal_commands.lua
+@@ -64,12 +64,21 @@ M[c.InternalCommands.InteractiveCodeAction] = function(params)
+     ---@type string|boolean|nil
+     local target_file
+ 
+-    local telescope_err, file = a.wrap(integrations.telescope_picker, 2)()
++    local has_telescope = pcall(require, "telescope.actions")
++    local has_snacks = pcall(require, "snacks")
+ 
+-    if telescope_err then
+-      target_file = async.ui_input { prompt = "Move to file: " }
+-    else
++    if has_telescope then
++      local _, file = a.wrap(integrations.telescope_picker, 2)()
++      target_file = file
++    elseif has_snacks then
++      local _, file = a.wrap(integrations.snacks_picker, 2)()
+       target_file = file
++    else
++      vim.notify(
++        "Telescope or snacks.nvim picker needs to be installed to call this integration",
++        vim.log.levels.WARN
++      )
++      target_file = async.ui_input { prompt = "Move to file: " }
+     end
+ 
+     if target_file == nil or not vim.fn.filereadable(target_file) then

@@ -1,8 +1,9 @@
 return {
   {
-    't3ntxcl3s/typescript-tools.nvim',
+    'pmizio/typescript-tools.nvim',
     lazy = false,
     dependencies = {
+      'nhu/patchr.nvim',
       'nvim-lua/plenary.nvim',
       'neovim/nvim-lspconfig',
       'saghen/blink.cmp',
