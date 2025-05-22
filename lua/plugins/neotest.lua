@@ -8,17 +8,23 @@ return {
       'antoinemadec/FixCursorHold.nvim',
       'nvim-treesitter/nvim-treesitter',
       'nvim-neotest/neotest-plenary',
+      {
+        'vhyrro/luarocks.nvim',
+        opts = {
+          rocks = { 'lua-curl', 'inspect', 'nvim-nio', 'mimetypes', 'xml2lua' },
+        },
+      },
+      'arthur944/neotest-bun',
     },
     opts = {
       adapters = {
         'neotest-plenary',
+        'neotest-bun',
       },
       status = { virtual_text = true },
-      output = { open_on_run = true },
+      output = { open_on_run = false },
       quickfix = {
-        open = function()
-          require('trouble').open { mode = 'quickfix', focus = false }
-        end,
+        enabled = false,
       },
     },
     config = function(_, opts)
@@ -34,6 +40,7 @@ return {
       }, neotest_ns)
 
       opts.consumers = opts.consumers or {}
+
       -- Refresh and auto close trouble after running tests
       ---@type neotest.Consumer
       opts.consumers.trouble = function(client)

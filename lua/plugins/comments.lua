@@ -70,6 +70,10 @@ return {
         log_watcher = {
           enabled = true,
           sources = {
+            neotest = {
+              type = 'neotest',
+              name = 'Neotest',
+            },
             ts = {
               type = 'filesystem',
               name = 'Log file',
